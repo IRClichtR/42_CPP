@@ -1,0 +1,27 @@
+# Learning material
+cpp*/learn_lab
+
+# Compiled object files
+*.o
+*.a
+
+# Executable files
+a.out
+*.exe
+minishell
+
+# Ignore editor/IDE specific files
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.vscode-workspace
+
+# Visual Studio Code specific
+.vscode/
+
+# Ignore backup and temporary files
+*~
+\#*
+.DS_Store
+Thumbs.db
