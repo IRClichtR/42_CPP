@@ -12,7 +12,7 @@ class PhoneBook {
   public:
     PhoneBook(void);
     ~PhoneBook(void);
-    int   GetContact();
+    int   GetContactInfo();
     void  SetContact();
 
   private:
