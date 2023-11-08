@@ -5,17 +5,29 @@
 # include <string>
 # include <cctype>
 
+using namespace std;
+
 class PhoneBook {
+
+  public:
+    PhoneBook(void);
+    ~PhoneBook(void);
+    int   GetContact();
+    void  SetContact();
 
   private:
     class Contact {
 
+      public:
+        Contact(void);
+        ~Contact(void);
+
       private:
-        std::string   FirstName;
-        std::string   LastName;
-        std::string   NickName;
+        string   FirstName;
+        string   LastName;
+        string   NickName;
         unsigned int  PhoneNumber;
-        std::string   DarkestSecret;
+        string   DarkestSecret;
     };
 
 };
