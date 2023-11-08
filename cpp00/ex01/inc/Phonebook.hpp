@@ -6,15 +6,19 @@
 # include <>
 
 class PhoneBook {
+  public:
+  
+  private:
+    class Contact {
 
-public:
-
-private:
+      std::string   FirstName;
+      std::string   LastName;
+      std::string   NickName;
+      unsigned int  PhoneNumber;
+      std::string   DarkestSecret;
+      }
   
 };
 
-class Contact {
-
-}
 #endif // !PHONEBOOK_HPP
 
