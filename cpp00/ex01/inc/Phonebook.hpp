@@ -3,21 +3,21 @@
 
 # include <iostream>
 # include <string>
-# include <>
+# include <cctype>
 
 class PhoneBook {
-  public:
-  
+
   private:
     class Contact {
 
-      std::string   FirstName;
-      std::string   LastName;
-      std::string   NickName;
-      unsigned int  PhoneNumber;
-      std::string   DarkestSecret;
-      }
-  
+      private:
+        std::string   FirstName;
+        std::string   LastName;
+        std::string   NickName;
+        unsigned int  PhoneNumber;
+        std::string   DarkestSecret;
+    };
+
 };
 
 #endif // !PHONEBOOK_HPP
