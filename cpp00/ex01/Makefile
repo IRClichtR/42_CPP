@@ -1,13 +1,22 @@
-NAME			= Megaphone
+NAME			= Phonebook
 
 ############## Compilation & Flags ###########
 CXX				= c++
 FLAGS			= -Wall -Wextra -Werror
 STD_FLAG	=	-std=c++98
+INC_FLAG	= -Iinc
+
+############## Include Dir ###########
+INC_DIR		= inc/
+INC_FD		= 	define.hpp \
+							PhonebookClass.hpp \
+							ContactClass.hpp
+INC				= $(addprefix $(INC_DIR), $(INC_FD))
 
 ############## SRC Dirs & Files ###########
 SRCS_DIR	= srcs/
-SRCS_FD		= Megaphone.cpp
+SRCS_FD		= 	main.cpp \
+							Phonebook.cpp
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FD))
 
 
@@ -25,9 +34,9 @@ $(NAME): $(OBJS)
 	$(CXX) $(OBJS) -o $(NAME)
 	@echo "\033[32m$(NAME) is ready to use\033[0m"
 
-$(OBJ_DIR)/%.o:$(SRCS_DIR)/%.c
+$(OBJ_DIR)/%.o:$(SRCS_DIR)/%.cpp $(INC_FLAG)
 	mkdir -p $(OBJ_DIR)
-	$(CXX) $(FLAGS) $(STD_FLAG) -c -o $@ $<
+	$(CXX) $(FLAGS) $(STD_FLAG) $(INC_FLAG) -c -o $@ $<
 
 #-include $(DEPS)
 
@@ -43,3 +52,4 @@ re: fclean all
 
 ############## Relink ###########
 .PHONY: clean fclean re
+.SILENT:
