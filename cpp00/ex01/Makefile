@@ -4,7 +4,7 @@ NAME			= Phonebook
 CXX				= c++
 FLAGS			= -Wall -Wextra -Werror
 STD_FLAG	=	-std=c++98
-INC_FLAG	= -Iinc
+INC_FLAG	= -I inc
 
 ############## Include Dir ###########
 INC_DIR		= inc/
@@ -34,7 +34,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(OBJS) -o $(NAME)
 	@echo "\033[32m$(NAME) is ready to use\033[0m"
 
-$(OBJ_DIR)/%.o:$(SRCS_DIR)/%.cpp $(INC_FLAG)
+$(OBJ_DIR)/%.o:$(SRCS_DIR)/%.cpp
 	mkdir -p $(OBJ_DIR)
 	$(CXX) $(FLAGS) $(STD_FLAG) $(INC_FLAG) -c -o $@ $<
 
