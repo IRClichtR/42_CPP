@@ -2,6 +2,15 @@
 #include "../inc/ContactClass.hpp"
 #include "../inc/PhonebookClass.hpp"
 
+void  displayInstructions(void) {
+  
+  std::cout << "Welcome to my Awsome Phonebook" << std::endl;
+  std::cout << "Instructions:" << std::endl;
+  std::cout << "<ADD> add a contact" << std::endl;
+  std::cout << "<SEARCH> <INDEX> look for a specific index in the Phonebook" << std::endl;
+  std::cout << "Have fun!" << std::endl;
+  
+}
 
 int main(void) {
   
@@ -11,6 +20,7 @@ int main(void) {
 
   while (1) {
 
+    displayInstructions();
     std::cin >> Input;
     if (Input.compare("ADD") == 0) {
       // std::cout << "Adding contact" << std::endl;
@@ -21,7 +31,8 @@ int main(void) {
       break ;
     }
     else {
-      std::cout << "Oops: " << Input << std::endl;
+      std::cout << "Oops: " << Input << " is not a valid entry" << std::endl;
+      displayInstructions(void);
     }
     if (i == PB_SIZE - 1) {
       i == 1;
