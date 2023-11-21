@@ -16,13 +16,14 @@ INC				= $(addprefix $(INC_DIR), $(INC_FD))
 ############## SRC Dirs & Files ###########
 SRCS_DIR	= srcs/
 SRCS_FD		= 	main.cpp \
-							Phonebook.cpp
+							Phonebook.cpp \
+							Contact.cpp
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FD))
 
 
 ############## OBJS Dirs & Files ###########
 OBJ_DIR		= .obj
-OBJS			= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJS			= $(SRCS:$(SRCS_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 #DEPS			= $(OBJS:.o=.d)
 
 

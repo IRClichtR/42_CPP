@@ -18,10 +18,10 @@ public:
 
 private:
 
-  std::basic_string _FirstName;
-  std::basic_string _LastName;
-  std::basic_string _NickName;
-  std::basic_string _DarkestSecret;
+  std::string _FirstName;
+  std::string _LastName;
+  std::string _NickName;
+  std::string _DarkestSecret;
   unsigned int      _PhoneNb;
 
   int               _setFirstName();

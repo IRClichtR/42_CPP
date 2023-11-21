@@ -20,5 +20,17 @@
 # define EMPTY_CONTACT "--- Empty Contact slot ---"
 # define W_OVER_CONTACT "--- Writting over existing contact ---"
 
+//////////////////////////////////////////
+// SETUPS ////////////////////////////////
+
+
+// ANSI COLORS ///////////////////////////
+
+# define YELLOW  
+# define GREEN
+# define RED
+# define BLUE "\033[1;44m"
+# define ORANGE
+//////////////////////////////////////////
 
 #endif // !DEBUG

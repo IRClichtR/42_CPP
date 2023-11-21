@@ -14,18 +14,16 @@ class Phonebook {
     ~Phonebook(void);
 
 
-    int   AddContact();
-    int   getPBStatus(void) const;
-    int   setPBStatus(void);
-    int   getAllContacts(void) const;
-    int   getContact(void) const;
-    int   searchContact(int index);
+    int     AddContact(void);
+    int     DisplayAllContacts(void) const;
+    int     DisplayContact(void) const;
+    int     searchContact(int index);
 
 
   private:
 
-    int   _PhonebookStatus;
-    class _Contact[PB_SIZE];
+    Contact _Contact[PB_SIZE];
+
 };
 
 #endif
