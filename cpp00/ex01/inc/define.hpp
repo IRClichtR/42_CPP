@@ -11,6 +11,11 @@
 
 # define SUCCESS 0
 # define ERROR -42
+# define FIRSTNAME_ERR 1
+# define LASTNAME_ERR 2
+# define NICKNAME_ERR 3
+# define PHONENB_ERR 4
+# define DARK_ERR 5
 
 //////////////////////////////////////////
 // Define values/////////////////////////////
@@ -21,9 +26,6 @@
 # define W_OVER_CONTACT "--- Writting over existing contact ---"
 
 //////////////////////////////////////////
-// SETUPS ////////////////////////////////
-
-
 // ANSI COLORS ///////////////////////////
 
 # define YELLOW  
@@ -33,4 +35,10 @@
 # define ORANGE
 //////////////////////////////////////////
 
-#endif // !DEBUG
+//////////////////////////////////////////
+// FUNCTIONS ////////////////////////////
+
+void  displayInstructions(void);
+
+
+#endif //

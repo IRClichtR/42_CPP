@@ -14,9 +14,10 @@ class Phonebook {
     ~Phonebook(void);
 
 
-    int     AddContact(void);
-    int     DisplayAllContacts(void) const;
-    int     DisplayContact(void) const;
+    void    DisplayInstructions(void) const;
+    int     AddContact(int index);
+    void    DisplayAllContacts(void) const;
+    void    DisplayContact(int index) const;
     int     searchContact(int index);
 
 
