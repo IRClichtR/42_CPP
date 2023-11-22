@@ -8,7 +8,7 @@ Contact::Contact(void) {
 
 int Contact::_setFirstName(void) {
 
-  std::cout << "First Name: ";
+  std::cout << "\033[32m" << "First Name: " << "\033[0m";
   std::getline(std::cin,_FirstName); 
   if (_FirstName == "")
     return (ERROR);
@@ -18,7 +18,7 @@ int Contact::_setFirstName(void) {
 
 int Contact::_setLastName(void) {
 
-  std::cout << "Last Name: ";
+  std::cout << "\033[32m" << "Last Name: " << "\033[0m";
   std::getline(std::cin,_LastName); 
   if (_LastName == "")
     return (ERROR);
@@ -28,7 +28,7 @@ int Contact::_setLastName(void) {
 
 int Contact::_setNickName(void)  {
 
-  std::cout << "NickName: ";
+  std::cout << "\033[32m" << "NickName: " << "\033[0m";
   std::getline(std::cin,_NickName); 
   if (_NickName == "")
     return (ERROR);
@@ -42,11 +42,12 @@ int Contact::_setPhoneNb(void) {
   int           i = -1;
   int           len;
 
-  std::cout << "Phone Number: ";
+  std::cout << "\033[32m" << "Phone Number (10 digits): " << "\033[0m";
   std::getline(std::cin,string_nb); 
   len = string_nb.length();
+  _PhoneNb = 0;
 
-  if (len > 10)
+  if (len != 10)
     return (ERROR);
 
   while (string_nb[++i]) {
@@ -54,14 +55,14 @@ int Contact::_setPhoneNb(void) {
       return (ERROR);
   }
 
-  _PhoneNb = std::stoul (string_nb,nullptr,0);
+  _PhoneNb = std::strtoul(string_nb.c_str(),nullptr,10);
   return (SUCCESS);
 
 }
 
 int Contact::_setDarkestSecret(void) {
 
-  std::cout << "Darkest Secret: ";
+  std::cout << "\033[32m" << "Darkest Secret: " << "\033[0m";
   std::getline(std::cin,_DarkestSecret);
   if (_DarkestSecret == "")
     return (ERROR);
@@ -70,26 +71,37 @@ int Contact::_setDarkestSecret(void) {
 
 int Contact::setContact(void) {
 
-  if (_setFirstName() == ERROR)
-    return (FIRSTNAME_ERR, ERROR);
-  if (_setLastName() == ERROR)
-    return (LASTNAME_ERR, ERROR);
-  if (_setNickName() == ERROR)
-    return (NICKNAME_ERR, ERROR);
-  if (_setPhoneNb() == ERROR)
-    return (PHONENB_ERR, ERROR);
-  if (_setDarkestSecret() == ERROR)
-    return (DARK_ERR, ERROR);
+  if (_setFirstName() == ERROR) { 
+    std::cout << "\033[31m" << "Invalid First Name: field can't be empty" << "\033[0m" << std::endl;
+    return (ERROR);
+  }
+  if (_setLastName() == ERROR) { 
+    std::cout << "\033[31m" << "Invalid Last Name: Field can't be empty" << "\033[0m" << std::endl;
+    return (ERROR);
+  }
+  if (_setNickName() == ERROR) { 
+    std::cout << "\033[31m" << "Invalid NickName: field can't be empty" << "\033[0m" << std::endl;
+    return (ERROR);
+  }
+  if (_setPhoneNb() == ERROR) { 
+    std::cout << "\033[31m" << "Invalid Phone number: Enter a 10 digits number" << "\033[0m" << std::endl;
+    return (ERROR);
+  }
+  if (_setDarkestSecret() == ERROR) { 
+    std::cout << "\033[31m" << "Invalid Dark Secret: field needs to be dark, not empty!" << "\033[0m" << std::endl;
+    return (ERROR);
+  }
   return (SUCCESS);
 }
 
 void  Contact::getContact() const {
 
-  std::cout << "First Name: " << Contact::_FirstName << std::endl;
-  std::cout << "Last Name: " << Contact::_LastName << std::endl;
-  std::cout << "Nick Name: " << Contact::_NickName << std::endl;
-  std::cout << "Phone Number: " << Contact::_PhoneNb << std::endl;
-  std::cout << "Darkest Secret: " << Contact::_DarkestSecret << std::endl;
+  std::cout << "\033[36m" << "First Name: " << "\033[0m" << Contact::_FirstName.substr(0, 9) << std::endl;
+  std::cout << "\033[36m" << "Last Name: " << "\033[0m" << Contact::_LastName.substr(0, 9) << std::endl;
+  std::cout << "\033[36m" << "Nick Name: " << "\033[0m" << Contact::_NickName.substr(0, 9) << std::endl;
+  std::cout << "\033[36m" << "Phone Number: " << "\033[0m";
+  std::cout << std::setfill('0') << std::setw(10) << _PhoneNb << std::endl;
+  std::cout << "\033[36m" << "Darkest Secret: " << "\033[0m" << Contact::_DarkestSecret.substr(0, 9) << std::endl;
 
 }
 

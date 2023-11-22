@@ -6,16 +6,13 @@
 # include <iostream>
 # include <string>
 # include <cctype>
+# include <cstdlib>
+# include <iomanip>
 
 // Return Values /////////////////////////////
 
 # define SUCCESS 0
 # define ERROR -42
-# define FIRSTNAME_ERR 1
-# define LASTNAME_ERR 2
-# define NICKNAME_ERR 3
-# define PHONENB_ERR 4
-# define DARK_ERR 5
 
 //////////////////////////////////////////
 // Define values/////////////////////////////

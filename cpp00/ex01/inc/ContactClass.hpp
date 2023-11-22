@@ -19,7 +19,7 @@ private:
   std::string       _LastName;
   std::string       _NickName;
   std::string       _DarkestSecret;
-  unsigned int      _PhoneNb;
+  unsigned long     _PhoneNb;
 
   int               _setFirstName();
   int               _setLastName();

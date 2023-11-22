@@ -2,7 +2,7 @@ NAME			= Phonebook
 
 ############## Compilation & Flags ###########
 CXX				= c++
-FLAGS			= -Wall -Wextra -Werror
+FLAGS			= -g3 -Wall -Wextra -Werror
 STD_FLAG	=	-std=c++98
 INC_FLAG	= -I inc
 

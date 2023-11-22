@@ -13,6 +13,7 @@ class Phonebook {
     Phonebook(void);
     ~Phonebook(void);
 
+    int     status;
 
     void    DisplayInstructions(void) const;
     int     AddContact(int index);
