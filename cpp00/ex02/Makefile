@@ -54,5 +54,5 @@ re: fclean all
 #RELINK PREVENTION_______________________________________/
 
 .PHONY: clean re fclean
-.SILENT:
+# .SILENT:
 

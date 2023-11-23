@@ -56,16 +56,45 @@ int Account::checkAmount(void) const{
 
 void  _displayTimestamp(void) {
 
-  std::time_t time = std::time(NULL);
-  struct timeHMS*timeful = std::localtime(&time);
+    std::time_t t = std::time(0);
+    std::tm *now = std::localtime(&t);
 
-  std::cout << std::setfill('0') << "[" << 1900 + timefull->tm_year \
-    << std::setw(2) << 1 + timefull->tm_mon \
-    << std::setw(2) << timefull->tm_mday << "_" \
-    << std::setw(2) << timefull->tm_hour << \
-    << std::setw(2) << timefull->tm_min << \
-    << std::setw(2) << timefull->tm_sec << "]";
+    std::cout << "[" << (now->tm_year + 1900);
 
+    if (now->tm_mon + 1 < 10)
+        std::cout << '0';
+    std::cout << (now->tm_mon + 1);
+
+    if (now->tm_mday + 1 < 10)
+        std::cout << '0';
+    std::cout << (now->tm_mday + 1);
+
+    if (now->tm_mon + 1 < 10)
+        std::cout << '0';
+    std::cout << (now->tm_mon + 1) << '_';
+
+    if (now->tm_hour + 1 < 10)
+        std::cout << '0';
+    std::cout << (now->tm_hour + 1);
+
+    if (now->tm_min + 1 < 10)
+        std::cout << '0';
+    std::cout << (now->tm_min + 1);
+
+    if (now->tm_sec + 1 < 10)
+        std::cout << '0';
+    std::cout << (now->tm_sec + 1) << "] ";
+  //
+  // std::time_t time = std::time(NULL);
+  // struct timeHMS*timeful = std::localtime(&time);
+  //
+  // std::cout << std::setfill('0') << "[" << 1900 + timefull->tm_year \
+  //   << std::setw(2) << 1 + timefull->tm_mon \
+  //   << std::setw(2) << timefull->tm_mday << "_" \
+  //   << std::setw(2) << timefull->tm_hour << \
+  //   << std::setw(2) << timefull->tm_min << \
+  //   << std::setw(2) << timefull->tm_sec << "]";
+  //
 }
 
 //__________________________________________________________________Display functions
