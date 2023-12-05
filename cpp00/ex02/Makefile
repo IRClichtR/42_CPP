@@ -1,50 +1,45 @@
-NAME			:= Awsome_Accounting
+NAME		:=	awsome_account
 
-# Compilation__________________________________________________________/
-#
-CXX				:= c++
-CFLAGS		:= -Werror -Wextra -Wall -std=c++98 -pedantic
-INC_FLAG	:= -I inc
+INC_DIR		:=	./inc
 
+SRCS_DIR	:=	./srcs
+SRCS		:=	\
+				Account.cpp \
+				tests.cpp
+SRCS		:=	$(SRCS:%=$(SRCS_DIR)/%)
 
-# Sources______________________________________________________________/
-#
-SRCS_DIR	:= srcs
-SRCS_FD		:= 	Account.cpp \
-							tests.cpp
-SRCS 			:= $(addprefix $(SRCS_DIR)/, $(SRCS_FD))
+BUILD_DIR	:=	.build
+OBJS		:=	$(SRCS:$(SRCS_DIR)/%.cpp=$(BUILD_DIR)/%.o)
+DEPS		:=	$(OBJS:.o=.d)
 
+CC			:=	c++ -o
+CFLAGS		:=	-Wall -Wextra -Werror -std=c++98
+IFLAGS		:=	$(addprefix -I, $(INC_DIR))
 
-# Objects______________________________________________________________/
-#
-OBJS_DIR	:= .obj
-OBJS 			:= $(SRCS:$(SRCS_DIR)/%cpp=$(OBJS_DIR)/%.o)
+RM			:=	rm -rf
+DIR_DUP		=	mkdir -p $(dir $@)
 
+#Recipes______________________________________________________/
+all: $(NAME)
 
-# Other tools__________________________________________________________/
-#
-RM				:= rm -rf
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-# Recipes______________________________________________________________/
-#
-all					: $(NAME)
+$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.cpp
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 
-$(NAME)			: $(OBJS)
-	$(CC) $(OBJS) -o $(NAME)
+-include $(DEPS)
 
-$(OBJS_DIR)/%.o:$(SRCS_DIR)/%cpp
-	mkdir -p $(OBJS_DIR)
-	$(CC) $(CFLAGS) $(INC_FLAG) -c -o $@ $<
+clean:
+	@$(RM) $(BUILD_DIR) $(DEPS)
+	@$(RM) $(OBJS)
 
-clean				:
-	$(RM) $(OBJS)
+fclean: clean
+	@$(RM) $(NAME)
 
-fclean			: clean
-	$(RM) $(NAME)
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
 
-re 					:
-	$(MAKE) fclean
-	$(MAKE) all
-
-.PHONY: clean fclean re
-.SILENT:
+.PHONY: all clean fclean re
