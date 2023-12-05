@@ -1,0 +1,9 @@
+#Ignore objects
+.obj
+.o
+.build
+
+#executables
+Phonebook
+Megaphone
+awsome_account
