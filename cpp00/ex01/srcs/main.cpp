@@ -11,6 +11,7 @@ int main(void) {
 
   AwPhonebook.status = -1;
   AwPhonebook.DisplayInstructions();
+
   while (1) {
 
     std::getline(std::cin,Input);

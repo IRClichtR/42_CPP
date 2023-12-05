@@ -3,7 +3,7 @@
 #include  "../inc/define.hpp"
 
 Contact::Contact(void) {
-  
+
 }
 
 int Contact::_setFirstName(void) {
@@ -71,40 +71,99 @@ int Contact::_setDarkestSecret(void) {
 
 int Contact::setContact(void) {
 
-  if (_setFirstName() == ERROR) { 
-    std::cout << "\033[31m" << "Invalid First Name: field can't be empty" << "\033[0m" << std::endl;
-    return (ERROR);
+  while (1) {
+
+    if (std::cin.eof()) {
+      std::cout << "\033[031m" << "Exit CTRL D" << "\033[0m" << std::endl;
+      std::exit(1);
+    }
+    if (_setFirstName() == ERROR) 
+      std::cout << "\033[31m" << "Invalid First Name: field can't be empty" << "\033[0m" << std::endl;
+    else
+      break ;
+
   }
-  if (_setLastName() == ERROR) { 
-    std::cout << "\033[31m" << "Invalid Last Name: Field can't be empty" << "\033[0m" << std::endl;
-    return (ERROR);
+
+  while (1) {
+
+    if (std::cin.eof()) {
+      std::cout << "\033[031m" << "Exit CTRL D" << "\033[0m" << std::endl;
+      std::exit(1);
+    }
+    if (_setLastName() == ERROR) { 
+      std::cout << "\033[31m" << "Invalid Last Name: Field can't be empty" << "\033[0m" << std::endl;
+    }
+    else 
+      break ;
   }
-  if (_setNickName() == ERROR) { 
-    std::cout << "\033[31m" << "Invalid NickName: field can't be empty" << "\033[0m" << std::endl;
-    return (ERROR);
+
+  while (1) {
+
+    if (std::cin.eof()) {
+      std::cout << "\033[031m" << "Exit CTRL D" << "\033[0m" << std::endl;
+      std::exit(1);
+    }
+    if (_setNickName() == ERROR) { 
+      std::cout << "\033[31m" << "Invalid NickName: field can't be empty" << "\033[0m" << std::endl;
+    }
+    else 
+      break ;
+
   }
-  if (_setPhoneNb() == ERROR) { 
-    std::cout << "\033[31m" << "Invalid Phone number: Enter a 10 digits number" << "\033[0m" << std::endl;
-    return (ERROR);
+
+  while (1) {
+
+    if (std::cin.eof()) {
+      std::cout << "\033[031m" << "Exit CTRL D" << "\033[0m" << std::endl;
+      std::exit(1);
+    }
+    if (_setPhoneNb() == ERROR) { 
+      std::cout << "\033[31m" << "Invalid Phone number: Enter a 10 digits number" << "\033[0m" << std::endl;
+    }
+    else 
+      break ;
+
   }
-  if (_setDarkestSecret() == ERROR) { 
-    std::cout << "\033[31m" << "Invalid Dark Secret: field needs to be dark, not empty!" << "\033[0m" << std::endl;
-    return (ERROR);
+
+  while (1) {
+
+    if (std::cin.eof()) {
+      std::cout << "\033[031m" << "Exit CTRL D" << "\033[0m" << std::endl;
+      std::exit(1);
+    }
+    if (_setDarkestSecret() == ERROR) { 
+      std::cout << "\033[31m" << "Invalid Dark Secret: field needs to be dark, not empty!" << "\033[0m" << std::endl;
+    }
+    else 
+      break ;
+
   }
+
   return (SUCCESS);
-}
-
-void  Contact::getContact() const {
-
-  std::cout << "\033[36m" << "First Name: " << "\033[0m" << Contact::_FirstName.substr(0, 9) << std::endl;
-  std::cout << "\033[36m" << "Last Name: " << "\033[0m" << Contact::_LastName.substr(0, 9) << std::endl;
-  std::cout << "\033[36m" << "Nick Name: " << "\033[0m" << Contact::_NickName.substr(0, 9) << std::endl;
-  std::cout << "\033[36m" << "Phone Number: " << "\033[0m";
-  std::cout << std::setfill('0') << std::setw(10) << _PhoneNb << std::endl;
-  std::cout << "\033[36m" << "Darkest Secret: " << "\033[0m" << Contact::_DarkestSecret.substr(0, 9) << std::endl;
 
 }
 
-Contact::~Contact(void) {
+  void  Contact::getContact() const {
 
-}
+    std::cout << std::setw(10) << std::right 
+      << "\033[36m" << "First Name: " << "\033[0m" 
+      << Contact::_FirstName.substr(0, 9) << " | ";
+    std::cout << std::setw(10) << std::right 
+      << "\033[36m" << "Last Name: " << "\033[0m" 
+      << Contact::_LastName.substr(0, 9) << " | ";
+    std::cout << std::setw(10) << std::right 
+      << "\033[36m" << "Nick Name: " << "\033[0m" 
+      << Contact::_NickName.substr(0, 9) << " | ";
+    std::cout << std::setw(10) << std::right 
+      << "\033[36m" << "Phone Number: " << "\033[0m";
+    std::cout << std::setw(10) << std::setfill('0') << std::right 
+      << _PhoneNb << " | " << std::setfill(' ');
+    std::cout << std::setw(10) << std::right 
+      << "\033[36m" << "Darkest Secret: " << "\033[0m" 
+      << Contact::_DarkestSecret << std::endl;
+
+  }
+
+  Contact::~Contact(void) {
+
+  }
