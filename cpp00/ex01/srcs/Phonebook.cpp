@@ -9,11 +9,12 @@ Phonebook::Phonebook(void) {
 
 void  Phonebook::DisplayInstructions(void) const {
   
-  std::cout << "Welcome to my Awsome Phonebook" << std::endl;
+  std::cout << "\033[34m" << "Welcome to my Awsome Phonebook" << std::endl;
   std::cout << "Instructions:" << std::endl;
-  std::cout << "<ADD> add a contact" << std::endl;
-  std::cout << "<SEARCH> <INDEX> look for a specific index in the Phonebook" << std::endl;
-  std::cout << "Have fun!" << std::endl;
+  std::cout << "[ADD] add a contact" << std::endl;
+  std::cout << "[SEARCH] display all contacts and look for specific contact" << std::endl;
+  std::cout << "[EXIT] exit Awsome Phonebook :'(" << std::endl;
+  std::cout << "Have fun!" << "\033[0m" << std::endl;
   
 }
 
@@ -34,6 +35,13 @@ int Phonebook::AddContact(int index) {
 void Phonebook::DisplayContact(int index) const {
 
   Phonebook::_Contact[index].getContact();
+
+}
+
+void  Phonebook::DisplayAllContacts(void) const {
+
+  for (int index = 0; index < 8; index++)
+    Phonebook::_Contact[index].getShortContact(index);
 
 }
 

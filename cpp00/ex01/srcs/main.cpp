@@ -14,6 +14,8 @@ int main(void) {
 
   while (1) {
 
+    std::cout << "\033[034m" << "Enter Command [ADD] [SEARCH] [EXIT]:" << "\033[0m";
+
     std::getline(std::cin,Input);
 
     if (std::cin.eof()){
@@ -39,7 +41,7 @@ int main(void) {
     }
     else if (Input.compare("SEARCH") == 0) {
 
-      std::cout << AwPhonebook.status << std::endl;
+      AwPhonebook.DisplayAllContacts();
       std::cout << "\033[36m" << "Enter Contact Index <0-7>: " << "\033[0m";
       std::getline(std::cin,Input);
 

@@ -145,23 +145,58 @@ int Contact::setContact(void) {
 
   void  Contact::getContact() const {
 
-    std::cout << std::setw(10) << std::right 
-      << "\033[36m" << "First Name: " << "\033[0m" 
-      << Contact::_FirstName.substr(0, 9) << " | ";
-    std::cout << std::setw(10) << std::right 
-      << "\033[36m" << "Last Name: " << "\033[0m" 
-      << Contact::_LastName.substr(0, 9) << " | ";
-    std::cout << std::setw(10) << std::right 
-      << "\033[36m" << "Nick Name: " << "\033[0m" 
-      << Contact::_NickName.substr(0, 9) << " | ";
-    std::cout << std::setw(10) << std::right 
-      << "\033[36m" << "Phone Number: " << "\033[0m";
-    std::cout << std::setw(10) << std::setfill('0') << std::right 
-      << _PhoneNb << " | " << std::setfill(' ');
-    std::cout << std::setw(10) << std::right 
-      << "\033[36m" << "Darkest Secret: " << "\033[0m" 
+    std::cout << "\033[36m" << "First Name: " << "\033[0m" 
+      << Contact::_FirstName << std::endl;
+    std::cout << "\033[36m" << "Last Name: " << "\033[0m" 
+      << Contact::_LastName << std::endl;
+    std::cout << "\033[36m" << "Nick Name: " << "\033[0m" 
+      << Contact::_NickName.substr(0, 9) << std::endl;
+    std::cout << "\033[36m" << "Phone Number: " << "\033[0m";
+    std::cout << std::setw(10) << std::setfill('0') 
+      << _PhoneNb << std::setfill(' ') << std::endl;
+    std::cout << "\033[36m" << "Darkest Secret: " << "\033[0m" 
       << Contact::_DarkestSecret << std::endl;
 
+  }
+
+  void  Contact::printTrimName(std::string name) const {
+
+    if (name.length() > 9) {
+
+      std::cout << "\033[36m" << std::setw(9) 
+        << name.substr(0, 9)
+        << "." << "\033[0m";
+
+    }
+    else {
+
+      std::cout << "\033[36m" << std::setw(10) << std::right 
+        << name << "\033[0m";
+      
+    }
+
+  }
+
+  void  Contact::getShortContact(int index) const {
+
+    if (index == 0) {
+
+    std::cout << "\033[36m"
+      << std::setw(10) << std::right << "index" << "|" 
+      << std::setw(10) << std::right << "First Name" << "|"
+      << std::setw(10) << std::right << "Last Name" << "|"
+      << std::setw(10) << std::right << "NickName" << std::endl;
+
+    }
+   
+    std::cout << "\033[36m" << std::setw(10) << std::right << index; 
+    std::cout << "\033[36m" << "|";
+    printTrimName(Contact::_FirstName);
+    std::cout << "\033[36m" << "|";
+    printTrimName(Contact::_LastName);
+    std::cout << "\033[36m" << "|";
+    printTrimName(Contact::_NickName);
+    std::cout << std::endl;
   }
 
   Contact::~Contact(void) {

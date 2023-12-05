@@ -12,6 +12,8 @@ public:
 
   int               setContact();
   void              getContact() const;
+  void              getShortContact(int index) const;
+  void              printTrimName(std::string name) const;
 
 private:
 
