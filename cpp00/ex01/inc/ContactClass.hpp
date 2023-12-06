@@ -9,7 +9,7 @@
 /*   Updated: 2023/12/05 16:53:33 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#ifndef CONTACTCLASS_HPP
 # define CONTACTCLASS_HPP
 
 # include "define.hpp"

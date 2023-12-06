@@ -28,8 +28,8 @@ int main(int ac, char **av){
         voice[i] = toupper(voice[i]);
         std::cout << voice[i];
       }
-      std::cout << std::endl;
     }
+    std::cout << std::endl;
   }
   return (0);
 }
