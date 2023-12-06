@@ -10,7 +10,7 @@ public:
   
 //Constructors Destructors_____________________________________________________/
 
-  Zombie(void);
+  Zombie(std::string input_name);
   ~Zombie(void);
 
   void  announce (void);
@@ -20,5 +20,10 @@ private:
   std::string _name;
 
 };
+
+//Non Member Functions_________________________________________________________/
+
+void    randomChump(std::string name);
+Zombie* newZombie(std::string name);
 
 #endif // !ZOMBIE_HPP
