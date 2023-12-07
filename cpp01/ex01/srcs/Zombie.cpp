@@ -2,6 +2,10 @@
 
 //Constructors Destructors_____________________________________________________/
 
+Zombie::Zombie(void) {
+
+}
+
 Zombie::Zombie(std::string input_name) {
 
   this->_name = input_name;
