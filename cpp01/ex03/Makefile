@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= ZombieHorde
+NAME			= Violence
 
 #Includes__________________________________________________________________________/
 
@@ -18,8 +18,9 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 
 SRCS_DIR	= ./srcs
 SRCS			:= \
-						Zombie.cpp \
-						zombieHorde.cpp \
+						HumanA.cpp \
+						HumanB.cpp \
+						Weapon.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
@@ -81,4 +82,3 @@ re: fclean all
 
 .PHONY: all clean fclean re
 #End_______________________________________________________________________________/
-
