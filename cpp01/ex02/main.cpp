@@ -21,6 +21,8 @@ int  main(void) {
   std::cout << std::endl;
   std::cout << std::endl;
 
+  //display value of string
+  std::cout << BLUE << "value of string: " << RESET << myString << std::endl;
   //display value of string through stringPTR
   std::cout << BLUE << "value of string through stringPTR: " << RESET << *stringPTR << std::endl;
   //display value pointed by stringREF
