@@ -10,6 +10,8 @@ public:
   
 //Constructors Destructors_____________________________________________________/
 
+  Zombie(); //default Constructor
+   
   Zombie(std::string input_name);
   ~Zombie(void);
 
@@ -23,6 +25,6 @@ private:
 
 //Non Member Functions_________________________________________________________/
 
-Zombie* zombieHorde(int N, sstd::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif // !ZOMBIE_HPP

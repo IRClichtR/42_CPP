@@ -18,6 +18,7 @@
 # include <iostream>
 # include <string>
 # include <cctype>
+# include <cstddef> 
 # include <cstdlib>
 # include <iomanip>
 
