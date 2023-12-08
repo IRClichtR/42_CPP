@@ -4,14 +4,14 @@
 
 # include "define.hpp"
 
-class HumanA {
+class HumanB {
 
 public:
 
-  HumanA();
-  ~HumanA();
+  HumanB();
+  ~HumanB();
 
-  HumanA(std::string input_name) : _name(input_name);
+  HumanB(std::string input_name) : _name(input_name);
 
   void        attack(void);
 
