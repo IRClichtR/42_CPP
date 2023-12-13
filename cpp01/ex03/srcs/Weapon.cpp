@@ -1,39 +1,32 @@
 #include "define.hpp"
 
-//Constructors & Destructors
-//
-Weapon::Weapon {void} {
+// Constructors and Destructors________________________/
+
+Weapon::Weapon () {
   
-  std::cout << "created Weapon" << std::endl;
   return ; 
 }
 
 
-Weapon::Weapon {std::string name} _type(name) {
+Weapon::Weapon (std::string name) : _type(name) {
 
-  std::cout << "created Weapon: " << _type << std::endl;
   return ;
 }
 
-~Weapon::Weapon {void} {
+Weapon::~Weapon (void) {
 
-  std::cout << "Destroyed Weapon" << std::endl;
 }
 
-
-//Public functions______________________________/
-
+// Accessors___________________________________________/
 
 std::string&  Weapon::getType(void) {
 
-  std::string&  typeRef = this->_type;
-
-  return (typeRef);
+  std::string& newRef = _type;
+  return (newRef);
 }
 
 void  Weapon::setType(std::string newType) {
 
   this->_type = newType;
-  this->_typeRef = type 
   return ;
 }

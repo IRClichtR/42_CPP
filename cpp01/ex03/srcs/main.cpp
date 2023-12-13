@@ -3,7 +3,6 @@
 
 int   main(void) {
 
-  // std::cout << GREEN << "I'm OK" << RESET << std::endl;
   {
     Weapon club = Weapon("crude spiked club");
     HumanA bob("Bob", club);
@@ -14,11 +13,6 @@ int   main(void) {
   {
     Weapon club = Weapon("crude spiked club");
     HumanB jim("Jim");
-
-    std::cout << PURPLE << "--- added test to mark the difference between HumanA and HumanB: HumanB does not have a by default Weapon" << std::endl;
-    jim.attack(); // line added to mark the difference between HumanA and Human B
-    std::cout << "--- end of test ---" <<  RESET << std::endl;
-
     jim.setWeapon(club);
     jim.attack();
     club.setType("some other type of club");
@@ -26,5 +20,4 @@ int   main(void) {
   }
   return 0;
 
-  return (0);
 }
