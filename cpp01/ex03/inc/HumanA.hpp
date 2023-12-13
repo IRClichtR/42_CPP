@@ -10,15 +10,15 @@ public:
   HumanA();
   ~HumanA();
 
-  HumanA(std::string input_name, Weapon &defaultWeapon);
+  HumanA(std::string input_name, Weapon& defaultWeapon);
 
   void        attack(void);
-  void        setWeapon(Weapon &newWeapon);
+  void        setWeapon(Weapon& weaponRef);
 
 private:
 
-  Weapon      *_personalWeapon;
   std::string _name;
+  Weapon      *_personalWeapon;
 
 };
 

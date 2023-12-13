@@ -14,12 +14,12 @@ public:
   HumanB(std::string input_name);
 
   void        attack(void);
-  void        setWeapon(Weapon newWeapon);
+  void        setWeapon(Weapon& weaponRef);
 
 private:
 
-  Weapon      _personalWeapon;
   std::string _name;
+  Weapon      *_personalWeapon;
 
 };
 

@@ -2,30 +2,28 @@
 
 HumanB::HumanB() {
   
-  // std::cout << "HumanB default constructor called" << std::endl;
   return ;
 }
 
 HumanB::HumanB(std::string input_name) : _name(input_name){
 
-  // std::cout << "HumanB other constructor called" << std::endl;
   return ;
 }
 
 HumanB::~HumanB () {
 
-  // std::cout << "HumanB destroyed" << std::endl;
-}
+ }
 
-void  HumanB::setWeapon (Weapon newWeapon) {
+void  HumanB::setWeapon (Weapon& weaponRef) {
 
-  this->_personalWeapon = newWeapon;
+  this->_personalWeapon = &weaponRef;
+
   return ;
 }
 
 void  HumanB::attack(void) {
 
-  std::cout << this->_name << ": attacked with their " << this->_personalWeapon.getType() << std::endl;
+ std::cout << this->_name << " attacks with their " << this->_personalWeapon->getType() << std::endl;
   
   return ;
 }

@@ -21,8 +21,7 @@ Weapon::~Weapon (void) {
 
 std::string&  Weapon::getType(void) {
 
-  std::string& newRef = _type;
-  return (newRef);
+  return (_type);
 }
 
 void  Weapon::setType(std::string newType) {
