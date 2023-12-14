@@ -1,18 +1,14 @@
 #include "define.hpp"
 
-class subInFile {
+class streamEditor {
 
 public:
+  streamEditor(void);
+  ~streamEditor(void);
 
-  subInFile();
-  subInFile(std::ifstream fdPath, std::string toSub, std::string subStr);
-  ~subInFile();
-
-
-private:
-
-  std::ifstream _fdPath;
-  std::string   _toSub;
-  std::string   _subStr;
+  static bool          checkFileName(char *filename);
+  static bool          getIfs(char *filename, std::string *toSed);
+  static std::string   sedMaker(std::string *toSed, char *strToFind, char *strReplace);
+  static void          saveInFile(char *filename, std::string save);
   
 };
