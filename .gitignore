@@ -2,13 +2,15 @@
 # cpp*/learn_lab
 
 # Compiled object files
+.build
+.object
+.obj
 *.o
 *.a
 
 # Executable files
 a.out
-*.exe
-minishell
+*.bin
 
 # Ignore editor/IDE specific files
 *.swp
