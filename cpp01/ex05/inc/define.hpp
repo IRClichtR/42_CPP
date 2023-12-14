@@ -18,8 +18,7 @@
 # include <iostream>
 # include <string>
 # include <stdlib.h>
-# include <fstream>
-# include "substitution.hpp"
+# include "Harl.hpp"
 
 //Return values________________________________________________________________/
 

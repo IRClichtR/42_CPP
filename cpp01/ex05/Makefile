@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= sedIsForLoosers
+NAME			= Harl_2.0
 
 #Includes__________________________________________________________________________/
 
@@ -19,7 +19,7 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 SRCS_DIR	= ./srcs
 SRCS			:= \
 						utils.cpp \
-						substitution.cpp \
+						Harl.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
