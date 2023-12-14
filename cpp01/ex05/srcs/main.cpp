@@ -24,6 +24,5 @@ int main(void) {
       std::cout << RED << "not valid input" << RESET << std::endl;
   }
 
-  std::cout << GREEN << "Everything is Alright" << RESET << std::endl;
   return (0);
 }

@@ -1,6 +1,6 @@
 #Ingredients_______________________________________________________________________/
 
-NAME        := MoreBrain
+NAME        := MoreBrain.bin
 
 SRCS        := main.c
 OBJS        := main.o
