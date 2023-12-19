@@ -11,7 +11,7 @@ int main(void) {
 
     if (std::cin.eof()) {
       std::cerr << RED << "Exit CTRL D" << RESET << std::endl;
-      std::exit(1);
+      return (1);
     }
     
     std::getline(std::cin, usrInput);

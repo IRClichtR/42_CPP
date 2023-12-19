@@ -3,21 +3,26 @@
 
 #include "define.hpp"
 
+typedef std::map<std::string, int>  mapType;
+
 class Harl {
 
-public:
+  public:
 
-  Harl();
-  ~Harl();
+    Harl();
+    ~Harl();
 
-  void  actionPtr(std::string choice);
+    void  actionPtr(std::string choice);
 
-private:
+  private:
 
-  void  _debug(void);
-  void  _info(void);
-  void  _warning(void);
-  void  _error(void);
+    void     (Harl::*funcPtrArray[4])();
+    mapType  funcMap;
+
+    void    _debug(void);
+    void    _info(void);
+    void    _warning(void);
+    void    _error(void);
 };
 
 #endif // !HARL_HPP

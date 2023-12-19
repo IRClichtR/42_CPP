@@ -2,10 +2,11 @@
 
 bool  checkInput(std::string usrInput) {
 
-  if (!usrInput.compare("DEBUG") && !usrInput.compare("INFO") 
-      && !usrInput.compare("WARNING" && !usrInput.compare("ERROR")))
+  if (!usrInput.compare("DEBUG") ||
+      !usrInput.compare("INFO") ||
+      !usrInput.compare("WARNING") ||
+      !usrInput.compare("ERROR"))
+    return (true);
 
-    return (false);
-
-  return (true);
+  return (false);
 }

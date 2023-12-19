@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   define.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:53:58 by ftuernal          #+#    #+#             */
 /*   Updated: 2023/12/05 16:54:00 by ftuernal         ###   ########.fr       */
@@ -18,6 +18,7 @@
 # include <iostream>
 # include <string>
 # include <stdlib.h>
+# include <map>
 # include "Harl.hpp"
 
 //Return values________________________________________________________________/
@@ -43,6 +44,8 @@ void  errOpen(void);
 # define RESET  "\033[0m"
 
 
+//Non-Member functions_________________________________________________________/
 
+bool  checkInput(std::string usrInput); 
 
 #endif //define.hpp

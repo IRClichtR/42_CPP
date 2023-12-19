@@ -2,19 +2,30 @@
 
 // Public functions___________/
 
-Harl::Harl(void) {}
+Harl::Harl(void) {
+
+  Harl::funcMap["DEBUG"] = 0;
+  Harl::funcMap["INFO"] = 1;
+  Harl::funcMap["WARNING"] = 2;
+  Harl::funcMap["ERROR"] = 3;
+
+  Harl::funcPtrArray[0] = &Harl::_debug;
+  Harl::funcPtrArray[1] = &Harl::_info;
+  Harl::funcPtrArray[2] = &Harl::_warning;
+  Harl::funcPtrArray[3] = &Harl::_error;
+}
+
 Harl::~Harl(void) {}
 
 void  Harl::actionPtr(std::string choice) {
 
-  void  (Harl::*funcPtrArray[4])() = {
-
-    &Harl::_debug;
-    &Harl::_info;
-    &Harl::_warning;
-    &Harl::_error;
+  std::map<std::string, int>::iterator it = funcMap.find(choice);
+  if (it != funcMap.end()) {
+    (this->*funcPtrArray[it->second])();
   }
-
+  else {
+    std::cerr << RED << "invalid cmd! I'm very irritated!" << RESET << std::endl;
+  }
 }
 
 // Private functions__________/
