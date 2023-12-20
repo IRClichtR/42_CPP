@@ -3,18 +3,20 @@
 
 # include "define.hpp"
 
-class fixedNbr {
+class Fixed {
 
 public:
 
-  fixedNbr();
-  ~fixedNbr();
+  Fixed();
+  Fixed(const Fixed&);
+  Fixed& operator=(const Fixed&);
+  ~Fixed();
+
+  int getRawBits(void) const;
+  void  setRawBits(int const raw);
 
 private:
-
-  int               _intVal;
-  static const int  _bits = 8;
-
+  
 };
 
 #endif // !FIXED_HPP
