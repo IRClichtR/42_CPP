@@ -13,9 +13,15 @@ Harl::Harl(void) {
   Harl::funcPtrArray[1] = &Harl::_info;
   Harl::funcPtrArray[2] = &Harl::_warning;
   Harl::funcPtrArray[3] = &Harl::_error;
+
+  std::cout << BLUE << "Brace for the new Karen..." << RESET << std::endl;
 }
 
-Harl::~Harl(void) {}
+Harl::~Harl(void) {
+
+    std::cout << BLUE << "A Karen has been destroyed, the World is finally at peace" << RESET << std::endl;
+
+}
 
 void  Harl::actionPtr(std::string choice) {
 

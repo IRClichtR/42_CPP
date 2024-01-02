@@ -16,10 +16,10 @@ int main(void) {
     
     std::getline(std::cin, usrInput);
 
-    if (checkInput(usrInput) == true)
-      ultimateKaren.actionPtr(usrInput);
-    else if (usrInput == "EXIT")
+    if (usrInput == "EXIT")
       break ;
+    else if (checkInput(usrInput) == true)
+      ultimateKaren.switchStatements(usrInput);
     else 
       std::cout << RED << "invalid cmd! I'm very irritated!" << RESET << std::endl;
   }
