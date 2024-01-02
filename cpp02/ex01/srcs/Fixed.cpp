@@ -1,9 +1,5 @@
 #include "define.hpp"
 
-// const int value of bits
-
-const int Fixed::_bits(8);
-
 // Canonical form constructors and destructors___/
 
 Fixed::Fixed(void) {
@@ -33,7 +29,21 @@ Fixed & Fixed::operator=(const Fixed& rhs) {
 
   return (*this);
 }
+// Other constructors_______/
 
+Fixed::Fixed(const int nb) {
+
+  this->_value = nb << this->_bits;
+  std::cout << BLUE << "Int constructor called" << RESET << std::endl;
+}
+
+Fixed::Fixed(const float fl) : _value(roundf(fl * (1 << _bits))) {
+
+  std::cout << BLUE << "Float constructor called" << RESET << std::endl;
+}
+
+// Destructor_______________/
+//
 Fixed::~Fixed() {
 
   std::cout << RED << "Destructor called" << RESET << std::endl;
@@ -41,6 +51,16 @@ Fixed::~Fixed() {
 
 
 // Member Functions___/
+
+int Fixed::toInt(void) const {
+
+  return (_value >> _bits);
+}
+
+float Fixed::toFloat(void) const {
+
+  return (float(_value) / float(1 << _bits));
+}
 
 int Fixed::getRawBits(void) const {
 
@@ -56,4 +76,10 @@ void  Fixed::setRawBits(int const bit) {
 
   this->_value = bit;
 
+}
+
+std::ostream  &operator<<(std::ostream& out, const Fixed& fixed) {
+
+  out << fixed.toFloat();
+  return (out);
 }

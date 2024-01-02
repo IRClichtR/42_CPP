@@ -18,7 +18,7 @@
 # include <iostream>
 # include <string>
 # include <stdlib.h>
-# include <map>
+# include <cmath>
 # include "Fixed.hpp"
 
 //Return values________________________________________________________________/
@@ -28,8 +28,6 @@
 
 //Utils Functions______________________________________________________________/
 
-void  displayInstructions(void);
-void  errOpen(void);
 
 
 
