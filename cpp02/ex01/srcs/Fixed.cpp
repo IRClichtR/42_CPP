@@ -1,5 +1,9 @@
 #include "define.hpp"
 
+// const int value of bits
+
+const int Fixed::_bits(8);
+
 // Canonical form constructors and destructors___/
 
 Fixed::Fixed(void) {
