@@ -9,13 +9,11 @@ public:
 
   Point(void);
   Point(const float x, const float y);
+  Point(const Fixed x, const Fixed y);
   ~Point(void);
 
   Point(const Point& src);
   Point &operator=(const Point&);
-
-  Fixed&  getPoint(void) const;
-  void    setPoint(const float x, const float y);
 
 private:
   
