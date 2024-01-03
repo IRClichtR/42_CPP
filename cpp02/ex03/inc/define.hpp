@@ -44,8 +44,5 @@ bool  bsp(Point const a, Point const b, Point const c, Point const point);
 # define RESET  "\033[0m"
 
 
-//Non-Member functions_________________________________________________________/
-
-bool  checkInput(std::string usrInput); 
 
 #endif //define.hpp
