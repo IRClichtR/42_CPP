@@ -15,10 +15,10 @@ public:
   ClapTrap(std::string name);
 
   // Getters
-  std::string&        getName(void) const;
-  int&                getHitPoints(void) const;
-  int&                getEnergyPoints(void) const;
-  int&                getDamages(void) const;
+  std::string         getName(void) const;
+  int                 getHitPoints(void) const;
+  int                 getEnergyPoints(void) const;
+  int                 getDamages(void) const;
 
   // Public functions
   void                attack(const std::string& target);
@@ -31,6 +31,7 @@ private:
   unsigned int        _hitPoints;
   unsigned int        _energyPoints;
   unsigned int        _attackDamage;
+  const unsigned int  _maxHealth = 10;
 
 };
 
