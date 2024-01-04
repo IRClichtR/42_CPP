@@ -23,7 +23,7 @@ Harl::~Harl(void) {
 
 }
 
-void  Harl::actionPtr(std::string choice) {
+void  Harl::complain(std::string choice) {
 
   std::map<std::string, int>::iterator it = funcMap.find(choice);
   if (it != funcMap.end()) {

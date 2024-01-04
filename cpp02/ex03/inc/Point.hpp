@@ -15,6 +15,9 @@ public:
   Point(const Point& src);
   Point &operator=(const Point&);
 
+  const Fixed&  getX(void) const;
+  const Fixed&  getY(void) const;
+
 private:
   
   const Fixed _x;

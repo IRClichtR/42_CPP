@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= sedIsForLoosers
+NAME			= ClapTrap.bin
 
 #Includes__________________________________________________________________________/
 
@@ -19,7 +19,7 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 SRCS_DIR	= ./srcs
 SRCS			:= \
 						utils.cpp \
-						substitution.cpp \
+						ClapTrap.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 

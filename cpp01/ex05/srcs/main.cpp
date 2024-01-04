@@ -17,11 +17,11 @@ int main(void) {
     std::getline(std::cin, usrInput);
 
     if (checkInput(usrInput) == true)
-      ultimateKaren.actionPtr(usrInput);
+      ultimateKaren.complain(usrInput);
     else if (usrInput == "EXIT")
       break ;
     else 
-      std::cout << RED << "invalid cmd! I'm very irritated!" << RESET << std::endl;
+      std::cout << RED << "invalid cmd! I'm very irritated! Enter command or EXIT to kill me" << RESET << std::endl;
   }
 
   return (0);

@@ -12,7 +12,7 @@ class Harl {
     Harl();
     ~Harl();
 
-    void  actionPtr(std::string choice);
+    void  complain(std::string choice);
 
   private:
 

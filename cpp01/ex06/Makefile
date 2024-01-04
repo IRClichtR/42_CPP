@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= sedIsForLoosers
+NAME			= Harl2.bin
 
 #Includes__________________________________________________________________________/
 
@@ -18,15 +18,16 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 
 SRCS_DIR	= ./srcs
 SRCS			:= \
-						utils.vacrever\
-						substitution.vacrever\
-						main.vacreverSRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
+						utils.cpp \
+						Harl.cpp \
+						main.cpp
+SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
 
 #Objects___________________________________________________________________________/
 
 BUILD_DIR	= .build
-OBJS			= $(SRCS:$(SRCS_DIR)/%.vacrever$(BUILD_DIR)/%.o)
+OBJS			= $(SRCS:$(SRCS_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEPS			= $(OBJS:.o=.d)
 
 
@@ -56,7 +57,8 @@ $(NAME): $(OBJS)
 	@$(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "[" "$(GREEN) $(NAME) ok and ready for use$(RESET)" "]"
 
-$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.vacrever	@$(DIR_DUP)
+$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.cpp
+	@$(DIR_DUP)
 	@$(CXX) $(CFLAGS) $(INC_FLAGS) -c -o $@ $<
 
 -include $(DEPS)

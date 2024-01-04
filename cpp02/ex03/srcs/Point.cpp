@@ -34,3 +34,15 @@ Point::~Point(void) {
 
   std::cout << CYAN << "Default Point destructor called" << RESET << std::endl;
 }
+
+//_____________________________________getter and setter/
+
+const Fixed&  Point::getX(void) {
+
+  return (*this->_x);
+}
+
+const Fixed&  Point::getY(void) {
+
+  return (*this->_y);
+}
