@@ -2,11 +2,12 @@
 
 bool  bsp(Point const a, Point const b, Point const c, Point const point) {
 
-  Fixed w1 = ((a._x * (c._y - a._y)) + ((point._y - a._y) * (c._x - a._x)) - (point._x * (c._y - a._y)))
-              / ((b._y - a._y) * (c._x - a._x)) - ((b._x - a._x) * (c._y - a._y));
-
-  Fixed w2 = point._y - a._y - (w1 * (b._y - a._y))
-              / (c._y - a._y);
-
-  return (w1 >= 0 && w2 >= 0);
+	float d1 = ((point.getX().toFloat() - b.getX().toFloat()) * (a.getY().toFloat() - b.getY().toFloat()) - (a.getX().toFloat() - b.getX().toFloat()) * (point.getY().toFloat() - b.getY().toFloat()));
+	float d2 = ((point.getX().toFloat() - c.getX().toFloat()) * (b.getY().toFloat() - c.getY().toFloat()) - (b.getX().toFloat() - c.getX().toFloat()) * (point.getY().toFloat() - c.getY().toFloat()));
+	float d3 = ((point.getX().toFloat() - a.getX().toFloat()) * (c.getY().toFloat() - a.getY().toFloat()) - (c.getX().toFloat() - a.getX().toFloat()) * (point.getY().toFloat() - a.getY().toFloat()));
+	
+	bool has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+	bool has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+	
+	return (!(has_neg && has_pos));
 }

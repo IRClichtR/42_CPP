@@ -15,8 +15,8 @@ public:
   Point(const Point& src);
   Point &operator=(const Point&);
 
-  const Fixed&  getX(void) const;
-  const Fixed&  getY(void) const;
+  const Fixed  getX(void) const;
+  const Fixed  getY(void) const;
 
   friend        std::ostream& operator<<(std::ostream&, const Point&);
 
