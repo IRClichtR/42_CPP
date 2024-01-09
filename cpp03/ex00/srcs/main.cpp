@@ -1,10 +1,11 @@
 #include "define.hpp"
-
-bool DEBUG = false;
+#include <string>
 
 int main(int ac, char **av) {
 
-  std::string input;
+  std::string   input;
+  std::string   strArg;
+  unsigned int  intArg;
 
   if (checkArgs(ac, av) == false) {
 
@@ -13,6 +14,7 @@ int main(int ac, char **av) {
 
   ClapTrap  bob("Bob");
   
+  input = getUsrInput();
   while (1) {
 
     std::cout << BLUE << "enter an action <attack> <heal> <take little damage> <take critical damage>: " << RESET;
@@ -29,7 +31,12 @@ int main(int ac, char **av) {
 
   }
 
-  bob.doAction(input);
+  if (!input.compare("attack")) {
+
+    bob.doAction(input, getStrArg());
+  }
+  else
+    bob.doAction(input, getIntArg());
 
   return (0);
 }

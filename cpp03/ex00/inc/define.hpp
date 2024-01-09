@@ -20,7 +20,16 @@
 # include <stdlib.h>
 # include "ClapTrap.hpp"
 
-//Return values________________________________________________________________/
+//Variables and return values__________________________________________________/
+
+bool DEBUG = false;
+
+
+typedef union {
+
+  int               intArg;
+  std::string       strArg;
+} arg;
 
 # define SUCCESS 0
 # define ERROR -42

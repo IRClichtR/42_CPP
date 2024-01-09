@@ -92,13 +92,26 @@ int  ClapTrap::getDamages(void) {
 
 //____________________________ Actions hub functions /
 
-void  Claptrap::doAction(std::string input, T argument) {
+void  Claptrap::doAction(std::string input, std::string& strArg) {
 
   int actionIdx;
 
   if (input.compare("attack"))
     actionIdx = 0;
-  else if (input.compare("heal"))
+  else {
+    std::cout << this->_name << " is confused..." << std::endl;
+    return ;
+  }
+
+  this->*actionArray[actionIdx](strArg);
+
+}
+
+void  Claptrap::doAction(std::string input, unsigned int intArg) {
+
+  int actionIdx;
+
+  if (input.compare("heal"))
     actionIdx = 1;
   else if (input.compare("damage"))
     actionIdx = 2;
@@ -109,7 +122,7 @@ void  Claptrap::doAction(std::string input, T argument) {
     return ;
   }
 
-  this->*actionArray[actionIdx](argument);
+  this->*actionArray[actionIdx](intArg);
 
 }
 

@@ -16,8 +16,13 @@ bool  checkArgs(int ac, char **av) {
       << "Program launch with debug flag"
       << RESET << std::endl;
     DEBUG = true;
-    return (true)
+    return (true);
   }
   else
     return (false);
+}
+
+unsigned int  getInArg(std::string action) {
+
+  std::cout << BLUE << "Enter amount of " << action << ": " << RESET;
 }
