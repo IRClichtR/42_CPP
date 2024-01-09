@@ -8,7 +8,6 @@ int main(int ac, char **av) {
 
   if (checkArgs(ac, av) == false) {
 
-    displayInstructions();
     return (1);
   }
 
@@ -30,28 +29,7 @@ int main(int ac, char **av) {
 
   }
 
-
-  }
+  bob.doAction(input);
 
   return (0);
 }
-  //
-  // if (ac > 2) {
-  //
-  //   std::cout << RED << "Invalid number of arguments" << RESET << std::endl;
-  //   displayInstructions();
-  // }
-  // else if (ac == 1) {
-  //
-  //   displayDebugInstructions(DEBUG);
-  //   // std::cout << RED << "for more debugging info rerun with --debug" << RESET << std::endl;
-  // }
-  // else if (ac == 2) {
-  //
-  //   DEBUG = true;
-  //   displayDebugInstructions(DEBUG);
-  //   // std::cout << RED << "-----------------------debug mode activated-----------------------" << RESET << std::endl;
-  //   // std::cout << std::endl;
-  //   // std::cout << std::endl;
-  //   // std::cout << std::endl;
-  // }

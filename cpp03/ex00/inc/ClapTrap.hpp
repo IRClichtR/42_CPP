@@ -25,6 +25,9 @@ public:
   void                takeDamage(unsigned int amount);
   void                beRepaired(unsigned int amount);
 
+  // Template argument
+  template <typename T>;
+
 private:
   
   std::string         _name;
@@ -32,6 +35,8 @@ private:
   unsigned int        _energyPoints;
   unsigned int        _attackDamage;
   const unsigned int  _maxHealth = 10;
+
+  void                (ClapTrap::*actionArray[4])();
 
 };
 

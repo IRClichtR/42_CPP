@@ -7,7 +7,11 @@ ClapTrap::ClapTrap(void) {
   if (DEBUG)
     std::cout << YELLOW << "default Constructor called" << RESET << std::endl;
 
-  return ;
+  ClapTrap::actionArray[0] = &ClapTrap::attack;
+  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
+  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
+  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
+
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) {
@@ -15,12 +19,17 @@ ClapTrap::ClapTrap(const ClapTrap &other) {
   if (DEBUG)
     std::cout << YELLOW << "Copy Constructor called" << RESET << std::endl;
 
+  ClapTrap::actionArray[0] = &ClapTrap::attack;
+  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
+  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
+  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
+
+
   this->_name = other.getName();
   this->_hitPoints = other.getHitPoints();
   this->_energyPoints = other.getEnergyPoints();
   this->_attackDamage = other.getDamages();
 
-  return ;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
@@ -33,6 +42,11 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
     this->_attackDamage = other.getDamages();
   }
 
+  ClapTrap::actionArray[0] = &ClapTrap::attack;
+  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
+  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
+  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
+
   return (*this);
 }
 
@@ -41,14 +55,17 @@ ClapTrap::~ClapTrap(void) {
   if (DEBUG)
     std::cout << "default Destructor called" << RESET << std::endl;
 
-  return ;
 }
 
 //____________________________Other constructors/
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 
-  return ;
+  ClapTrap::actionArray[0] = &ClapTrap::attack;
+  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
+  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
+  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
+
 } 
 
 //____________________________Getters/
@@ -73,9 +90,31 @@ int  ClapTrap::getDamages(void) {
   return (this->_attackDamage);
 }
 
+//____________________________ Actions hub functions /
+
+void  Claptrap::doAction(std::string input, T argument) {
+
+  int actionIdx;
+
+  if (input.compare("attack"))
+    actionIdx = 0;
+  else if (input.compare("heal"))
+    actionIdx = 1;
+  else if (input.compare("damage"))
+    actionIdx = 2;
+  else if (input.compare("Damages"))
+    actionIdx = 3;
+  else {
+    std::cout << this->_name << " is confused..." << std::endl;
+    return ;
+  }
+
+  this->*actionArray[actionIdx](argument);
+
+}
 
 //____________________________Public functions/
-
+  
 void  ClapTrap::attack(const std::string& target) {
 
   if (this->getHitPoints() == 0) {
@@ -97,7 +136,6 @@ void  ClapTrap::attack(const std::string& target) {
               << "has no energy point left :-(" << std::endl;
   }
 
-  return ;
 }
 
 void  ClapTrap::takeDamage(unsigned int amount) {
@@ -119,7 +157,6 @@ void  ClapTrap::takeDamage(unsigned int amount) {
                 << " damages!" << std::endl;
   }
 
-   return ;
 }
 
 void  ClapTrap::beRepaired(unsigned int amount) {
@@ -138,5 +175,4 @@ void  ClapTrap::beRepaired(unsigned int amount) {
             << " has retaken " << BLUE << amount << RESET
             << " hit points" << std::endl;
 
-  return ;
 }
