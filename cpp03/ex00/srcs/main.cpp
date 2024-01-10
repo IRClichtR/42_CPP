@@ -13,9 +13,12 @@ int main(int ac, char **av) {
 
   if (!input.compare("attack"))
     bob.attack(getStrArg(input));
-  else {
+  else if (!input.compare("damage") || !input.compare("heal")){
     unsigned int  intArg = getIntArg(input);
     bob.doAction(input, intArg);
+  }
+  else {
+    std::cout << RED << "No valid entry" << RESET << std::endl;
   }
 
   return (0);

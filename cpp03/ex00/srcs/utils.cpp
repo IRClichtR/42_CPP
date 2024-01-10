@@ -4,7 +4,10 @@ bool DEBUG = false;
 
 bool  checkArgs(int ac, char **av) {
 
-  std::string arg = av[1];
+  std::string arg;
+
+  if (ac > 1)
+    arg = av[1];
 
   if (ac == 1) {
 
@@ -32,15 +35,17 @@ std::string getUsrInput(void) {
 
   while (1) {
 
-    std::cout << BLUE << "enter an action <attack> <heal> <damage>: " << RESET;
+    std::cout << BLUE << "enter an action <attack> <heal> <damage> <exit>: " << RESET;
 
     std::getline(std::cin, input);
 
     if (std::cin.eof())
       break ;
 
-    if (!input.empty()) 
+    if (!input.empty())
       break ;
+    else if (!input.compare("exit"))
+      exit(1);
     else
       std::cout << RED << "Invalid command! ***the ClapTrap makes an awkward move***" << RESET << std::endl;
 
@@ -49,7 +54,7 @@ std::string getUsrInput(void) {
   return (input);
 }
 
-unsigned int  getInArg(std::string action) {
+unsigned int  getIntArg(std::string action) {
 
   unsigned int  uintAmount;
   std::string   amount;

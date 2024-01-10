@@ -5,14 +5,18 @@
 ClapTrap::ClapTrap(void) {
 
   if (DEBUG)
-    std::cout << YELLOW << "default Constructor called" << RESET << std::endl;
+    std::cout << "Default constructor called"<< std::endl;
+
+
+  if (DEBUG)
+    std::cout << "default Constructor called" << RESET << std::endl;
 
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) {
 
   if (DEBUG)
-    std::cout << YELLOW << "Copy Constructor called" << RESET << std::endl;
+    std::cout << "Copy Constructor called" << RESET << std::endl;
 
   this->_name = other.getName();
   this->_hitPoints = other.getHitPoints();
@@ -23,6 +27,9 @@ ClapTrap::ClapTrap(const ClapTrap &other) {
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+
+  if (DEBUG)
+    std::cout << "overload operator= called"<< std::endl;
 
   if (this != &other) {
 
@@ -74,9 +81,12 @@ unsigned int  ClapTrap::getDamages(void) const {
 
 void  ClapTrap::doAction(std::string input, unsigned int intArg) {
 
-  if (input.compare("heal"))
-    this->takeDamage(intArg);
-  else if (input.compare("damage"))
+  if (DEBUG)
+    std::cout << "doAction called with "<< input << " | " << intArg << std::endl;
+
+  if (!input.compare("heal"))
+    this->beRepaired(intArg);
+  else if (!input.compare("damage"))
     this->takeDamage(intArg);
   else {
     std::cout << this->_name << " is confused..." << std::endl;
@@ -88,6 +98,9 @@ void  ClapTrap::doAction(std::string input, unsigned int intArg) {
 //____________________________Public functions/
   
 void  ClapTrap::attack(const std::string& target) {
+
+  if (DEBUG)
+    std::cout << "attack called with "<< target << std::endl;
 
   if (this->getHitPoints() == 0) {
     std::cout << RED << "ClapTrap " << this->getName() 
@@ -112,6 +125,9 @@ void  ClapTrap::attack(const std::string& target) {
 
 void  ClapTrap::takeDamage(unsigned int amount) {
 
+  if (DEBUG) 
+    std::cout << "takeDamage() called" << std::endl;
+
   if (amount >= this->getHitPoints())
     this->_hitPoints = 0;
 
@@ -129,6 +145,9 @@ void  ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void  ClapTrap::beRepaired(unsigned int amount) {
+
+  if (DEBUG) 
+    std::cout << "beRepaired() called" << std::endl;
 
   if (this->_hitPoints == this->_maxHealth 
       || (this->_hitPoints + amount) > this->_maxHealth) {
