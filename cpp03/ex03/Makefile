@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= ScavTrap.bin
+NAME			= DiamondTrap.bin
 
 #Includes__________________________________________________________________________/
 
@@ -21,6 +21,7 @@ SRCS			:= \
 						utils.cpp \
 						ClapTrap.cpp \
 						ScavTrap.cpp \
+						FragTrap.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
