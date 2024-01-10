@@ -7,11 +7,6 @@ ClapTrap::ClapTrap(void) {
   if (DEBUG)
     std::cout << YELLOW << "default Constructor called" << RESET << std::endl;
 
-  ClapTrap::actionArray[0] = &ClapTrap::attack;
-  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
-  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
-  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
-
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) {
@@ -19,33 +14,23 @@ ClapTrap::ClapTrap(const ClapTrap &other) {
   if (DEBUG)
     std::cout << YELLOW << "Copy Constructor called" << RESET << std::endl;
 
-  ClapTrap::actionArray[0] = &ClapTrap::attack;
-  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
-  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
-  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
-
-
   this->_name = other.getName();
   this->_hitPoints = other.getHitPoints();
   this->_energyPoints = other.getEnergyPoints();
   this->_attackDamage = other.getDamages();
 
+  return ;
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 
-  if (this != &rhs) {
+  if (this != &other) {
 
     this->_name = other.getName();
     this->_hitPoints = other.getHitPoints();
     this->_energyPoints = other.getEnergyPoints();
     this->_attackDamage = other.getDamages();
   }
-
-  ClapTrap::actionArray[0] = &ClapTrap::attack;
-  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
-  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
-  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
 
   return (*this);
 }
@@ -61,68 +46,42 @@ ClapTrap::~ClapTrap(void) {
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 
-  ClapTrap::actionArray[0] = &ClapTrap::attack;
-  ClapTrap::actionArray[1] = &ClapTrap::getHitPoints;
-  ClapTrap::actionArray[2] = &ClapTrap::getEnergyPoints;
-  ClapTrap::actionArray[3] = &ClapTrap::getDamages;
-
 } 
 
 //____________________________Getters/
 
-std::string  ClapTrap::getName(void) {
+std::string  ClapTrap::getName(void) const {
 
   return (this->_name);
 }
 
-int  ClapTrap::getHitPoints(void) {
+unsigned int  ClapTrap::getHitPoints(void) const {
 
   return (this->_hitPoints);
 }
 
-int  ClapTrap::getEnergyPoints(void) {
+unsigned int  ClapTrap::getEnergyPoints(void) const {
 
   return (this->_energyPoints);
 }
 
-int  ClapTrap::getDamages(void) {
+unsigned int  ClapTrap::getDamages(void) const {
 
   return (this->_attackDamage);
 }
 
 //____________________________ Actions hub functions /
 
-void  Claptrap::doAction(std::string input, std::string& strArg) {
-
-  int actionIdx;
-
-  if (input.compare("attack"))
-    actionIdx = 0;
-  else {
-    std::cout << this->_name << " is confused..." << std::endl;
-    return ;
-  }
-
-  this->*actionArray[actionIdx](strArg);
-
-}
-
-void  Claptrap::doAction(std::string input, unsigned int intArg) {
-
-  int actionIdx;
+void  ClapTrap::doAction(std::string input, unsigned int intArg) {
 
   if (input.compare("heal"))
-    actionIdx = 1;
+    this->takeDamage(intArg);
   else if (input.compare("damage"))
-    actionIdx = 2;
-  else if (input.compare("Damages"))
-    actionIdx = 3;
+    this->takeDamage(intArg);
   else {
     std::cout << this->_name << " is confused..." << std::endl;
     return ;
   }
-
-  this->*actionArray[actionIdx](intArg);
 
 }
 
@@ -156,18 +115,15 @@ void  ClapTrap::takeDamage(unsigned int amount) {
   if (amount >= this->getHitPoints())
     this->_hitPoints = 0;
 
-  switch (true) {
-
-    case (this->getHitPoints() == 0) :
-      std::cout << RED << "ClapTrap " << this->getName() 
-                << " is DEAD, leave him alone!" << RESET << std::endl;
-      break ;
-
-    default :
-      this->getHitPoints() -= amount;
-      std::cout << "ClapTrap " << BLUE << this->getName() << RESET
-                << " took " << BLUE << amount << RESET 
-                << " damages!" << std::endl;
+  if (this->getHitPoints() == 0) {
+    std::cout << RED << "ClapTrap " << this->getName() 
+              << " is DEAD, leave him alone!" << RESET << std::endl;
+  }
+  else {
+    this->_hitPoints -= amount;
+    std::cout << "ClapTrap " << BLUE << this->getName() << RESET
+              << " took " << BLUE << amount << RESET 
+              << " damages!" << std::endl;
   }
 
 }

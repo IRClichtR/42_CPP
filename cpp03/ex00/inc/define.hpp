@@ -18,25 +18,23 @@
 # include <iostream>
 # include <string>
 # include <stdlib.h>
+# include <sstream>
 # include "ClapTrap.hpp"
 
 //Variables and return values__________________________________________________/
 
-bool DEBUG = false;
+extern bool DEBUG;
 
-
-typedef union {
-
-  int               intArg;
-  std::string       strArg;
-} arg;
 
 # define SUCCESS 0
 # define ERROR -42
 
 //Utils Functions______________________________________________________________/
 
-
+bool          checkArgs(int ac, char **av);
+unsigned int  getIntArg(std::string action);
+std::string   getStrArg(std::string action);
+std::string   getUsrInput(void);
 
 
 //ANSI Colors__________________________________________________________________/
