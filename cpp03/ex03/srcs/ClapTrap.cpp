@@ -51,7 +51,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 
 } 
 
-//____________________________Getters/
+//____________________________Getters and setters/
 
 std::string  ClapTrap::getName(void) const {
 
@@ -71,6 +71,21 @@ unsigned int  ClapTrap::getEnergyPoints(void) const {
 unsigned int  ClapTrap::getDamages(void) const {
 
   return (this->_attackDamage);
+}
+
+void  ClapTrap::setName(const std::string name) {
+
+  this->_name = name;
+}
+
+void  ClapTrap::setHitPoints(const unsigned int amount) {
+
+  this->_energyPoints = amount;
+}
+
+void  ClapTrap::setAttackDamage(const unsigned int amount) {
+
+  this->_attackDamage = amount;
 }
 
 //____________________________ Actions hub functions /

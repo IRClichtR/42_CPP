@@ -10,7 +10,7 @@ INC_DIR		= ./inc
 #Compilation tools_________________________________________________________________/
 
 CXX				= c++ -o
-CFLAGS		= -Werror -Wextra -Wall -std=c++98
+CFLAGS		= -Werror -Wextra -Wall -std=c++98 -Wshadow
 INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 
 
@@ -82,4 +82,5 @@ re: fclean all
 #Relink and display options________________________________________________________/
 
 .PHONY: all clean fclean re
+
 #End_______________________________________________________________________________/

@@ -16,11 +16,16 @@ public:
   // other constructors
   ClapTrap(std::string name);
 
-  // Getters
+  // Getters and Setters
   std::string               getName(void) const;    
   unsigned int              getHitPoints(void) const;
   unsigned int              getEnergyPoints(void) const;
   unsigned int              getDamages(void) const;
+
+  void                      setName(const std::string name);
+  void                      setHitPoints(const unsigned int amount);
+  void                      setEnergyPoints(const unsigned int amount);
+  void                      setAttackDamage(const unsigned int amount);
 
   // Public functions
   void                      attack(const std::string& target);
