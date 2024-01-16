@@ -14,7 +14,7 @@ Cat::Cat(const Cat &other) {
   if (DEBUG)
     std::cout << RED << "Cat copy constructor called" << RESET << std::endl;
 
-  this->type = other.type;
+  this->_type = other._type;
 }
 
 Cat& Cat::operator=(const Cat& other) {
@@ -22,7 +22,7 @@ Cat& Cat::operator=(const Cat& other) {
   if (DEBUG)
     std::cout << RED << "Cat overload operator= called" << RESET << std::endl;
 
-  if (this != other)
+  if (this != &other)
     this->_type = other._type;
 
   return (*this);
@@ -36,10 +36,12 @@ Cat::~Cat(void) {
 
 // Initialization constructor____________________________________________________//
 
-Cat::Cat(const std::string& name) _type(name) {
+Cat::Cat(const std::string& name) {
 
   if (DEBUG)
     std::cout << RED << "Cat _type initialization constructor called" << RESET << std::endl;
+
+  this->_type = name;
 }
 
 

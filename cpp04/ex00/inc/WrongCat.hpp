@@ -3,17 +3,17 @@
 
 # include "define.hpp"
 
-class WrongCat : virtual public Animal {
+class WrongCat : public WrongAnimal {
 
 public:
 
   // Canonical form
   WrongCat();
-  WrongCat(const WrongCat &) = default;
-  WrongCat &operator=(const WrongCat &) = default;
+  WrongCat(const WrongCat &);
+  WrongCat &operator=(const WrongCat &);
   ~WrongCat();
 
-  WrongCat(std::string name);
+  WrongCat(const std::string &name);
 
   void  makesound();
 

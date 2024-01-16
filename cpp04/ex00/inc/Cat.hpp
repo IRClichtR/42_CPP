@@ -3,7 +3,7 @@
 
 # include "define.hpp"
 
-class Cat : virtual public Animal {
+class Cat : public Animal {
 
 public:
 
@@ -15,7 +15,7 @@ public:
 
   Cat(const std::string& name);
 
-  void  makesound();
+  virtual void  makesound();
 
 };
 

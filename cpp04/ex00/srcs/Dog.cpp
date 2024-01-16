@@ -14,7 +14,7 @@ Dog::Dog(const Dog &other) {
   if (DEBUG)
     std::cout << RED << "Dog copy constructor called" << RESET << std::endl;
 
-  this->type = other.type;
+  this->_type = other._type;
 }
 
 Dog& Dog::operator=(const Dog& other) {
@@ -22,7 +22,7 @@ Dog& Dog::operator=(const Dog& other) {
   if (DEBUG)
     std::cout << RED << "Dog overload operator= called" << RESET << std::endl;
 
-  if (this != other)
+  if (this != &other)
     this->_type = other._type;
 
   return (*this);
@@ -36,16 +36,18 @@ Dog::~Dog(void) {
 
 // Initialization constructor____________________________________________________//
 
-Dog::Dog(const std::string& name) _type(name) {
+Dog::Dog(const std::string& name) {
 
   if (DEBUG)
     std::cout << RED << "Dog _type initialization constructor called" << RESET << std::endl;
+
+  this->_type = name;
 }
 
 
 // Public methods _______________________________________________________________//
 
-void  Dog::makesound(void) {
+void  Dog::makesound(void) const override {
 
-  std::cout << YELLOW << this->_type << RESET << "Patriarchy must end now!" << std::endl; 
+  std::cout << YELLOW << this->_type << RESET << ": Patriarchy must end now!" << std::endl; 
 }

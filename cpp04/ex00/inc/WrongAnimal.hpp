@@ -9,15 +9,17 @@ public:
 
   // Canonical form
   WrongAnimal();
-  WrongAnimal(const WrongAnimal &) = default;
-  WrongAnimal &operator=(const WrongAnimal &) = default;
+  WrongAnimal(const WrongAnimal &);
+  WrongAnimal &operator=(const WrongAnimal &);
   ~WrongAnimal();
 
-  void  makesound();
+  WrongAnimal(const std::string& name);
+
+  virtual void  makesound();
 
 protected:
   
-  std::string  type;
+  std::string  _type;
 };
 
 

@@ -12,6 +12,7 @@ public:
   Animal &operator=(const Animal &);
   ~Animal();
 
+  Animal(const std::string& name);
   // public methods
   void  makesound();
 

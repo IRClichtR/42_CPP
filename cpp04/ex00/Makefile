@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= ClapTrap.bin
+NAME			= AnimalCreator.bin
 
 #Includes__________________________________________________________________________/
 
@@ -19,7 +19,11 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 SRCS_DIR	= ./srcs
 SRCS			:= \
 						utils.cpp \
-						ClapTrap.cpp \
+						Animal.cpp \
+						Dog.cpp \
+						Cat.cpp \
+						WrongCat.cpp \
+						WrongAnimal.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
