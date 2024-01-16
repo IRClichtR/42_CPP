@@ -9,11 +9,11 @@ public:
 
   // Canonical form
   Cat();
-  Cat(const Cat &) = default;
-  Cat &operator=(const Cat &) = default;
+  Cat(const Cat &);
+  Cat &operator=(const Cat &);
   ~Cat();
 
-  Cat(std::string name);
+  Cat(const std::string& name);
 
   void  makesound();
 

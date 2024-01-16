@@ -9,8 +9,8 @@ public:
 
   // Canonical form
   Dog();
-  Dog(const Dog &) = default;
-  Dog &operator=(const Dog &) = default;
+  Dog(const Dog &);
+  Dog &operator=(const Dog &);
   ~Dog();
 
   Dog(std::string name);

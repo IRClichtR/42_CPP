@@ -4,6 +4,7 @@
 # include "define.hpp"
 
 class WrongAnimal {
+
 public:
 
   // Canonical form

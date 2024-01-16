@@ -8,15 +8,16 @@ public:
 
   // Canonical form
   Animal();
-  Animal(const Animal &) = default;
-  Animal &operator=(const Animal &) = default;
+  Animal(const Animal &);
+  Animal &operator=(const Animal &);
   ~Animal();
 
+  // public methods
   void  makesound();
 
 protected:
   
-  std::string  type;
+  std::string  _type;
 };
 
 
