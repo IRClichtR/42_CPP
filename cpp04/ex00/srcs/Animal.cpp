@@ -45,7 +45,7 @@ Animal::Animal(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  Animal::makesound(void) const override {
+void  Animal::makesound(void) {
 
   std::cout << YELLOW << this->_type << "Agrougrou!" << std::endl; 
 }

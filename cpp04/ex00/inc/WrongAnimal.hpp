@@ -15,7 +15,7 @@ public:
 
   WrongAnimal(const std::string& name);
 
-  virtual void  makesound();
+  void  makesound();
 
 protected:
   

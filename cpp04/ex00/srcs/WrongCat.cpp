@@ -47,7 +47,7 @@ WrongCat::WrongCat(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  WrongCat::makesound(void) const override {
+void  WrongCat::makesound(void) {
 
-  std::cout << YELLOW << this->_type << RESET << ": Cease the means of production!" << std::endl; 
+  std::cout << YELLOW << this->_type << RESET << "There is No Alternative! You peasants must work to buy my food!" << std::endl; 
 }

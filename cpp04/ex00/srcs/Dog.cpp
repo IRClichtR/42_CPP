@@ -47,7 +47,7 @@ Dog::Dog(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  Dog::makesound(void) const override {
+void  Dog::makesound(void) {
 
   std::cout << YELLOW << this->_type << RESET << ": Patriarchy must end now!" << std::endl; 
 }

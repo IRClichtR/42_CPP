@@ -15,7 +15,7 @@ public:
 
   Dog(const std::string& name);
 
-  virtual void  makesound();
+  void  makesound();
 
 };
 

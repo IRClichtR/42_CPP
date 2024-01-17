@@ -47,7 +47,7 @@ WrongAnimal::WrongAnimal(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  WrongAnimal::makesound(void) const override {
+void  WrongAnimal::makesound(void) {
 
   std::cout << YELLOW << this->_type << RESET << ": Agrou Agrou !" << std::endl; 
 }
