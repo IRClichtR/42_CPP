@@ -13,9 +13,6 @@ public:
   ~Animal();
 
   Animal(const std::string& name);
-  // Getter & Setters
-  void        setType(const std::string& name);
-  std::string getType(void) const;
   // public methods
   void  makesound();
 

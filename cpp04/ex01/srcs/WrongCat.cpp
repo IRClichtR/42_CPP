@@ -7,8 +7,6 @@ WrongCat::WrongCat(void) {
 
   if (DEBUG)
     std::cout << RED << "WrongCat default constructor called" << RESET << std::endl;
-
-  this->setType("WrongCat");
 }
 
 WrongCat::WrongCat(const WrongCat &other) {

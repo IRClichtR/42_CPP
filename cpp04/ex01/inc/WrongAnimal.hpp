@@ -15,9 +15,7 @@ public:
 
   WrongAnimal(const std::string& name);
 
-  void        setType(const std::string& name);
-  std::string getType(void) const;
-  void        makesound();
+  void  makesound();
 
 protected:
   

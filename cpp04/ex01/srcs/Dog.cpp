@@ -7,8 +7,6 @@ Dog::Dog(void) {
 
   if (DEBUG)
     std::cout << RED << "Dog default constructor called" << RESET << std::endl;
-
-  this->setType("Dog");
 }
 
 Dog::Dog(const Dog &other) {
@@ -51,5 +49,5 @@ Dog::Dog(const std::string& name) {
 
 void  Dog::makesound(void) {
 
-  std::cout << YELLOW << this->getType() << RESET << ": Patriarchy must end now!" << std::endl; 
+  std::cout << YELLOW << this->_type << RESET << ": Patriarchy must end now!" << std::endl; 
 }
