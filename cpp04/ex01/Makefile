@@ -20,10 +20,11 @@ SRCS_DIR	= ./srcs
 SRCS			:= \
 						utils.cpp \
 						Animal.cpp \
-						Dog.cpp \
+						Brain.cpp \
 						Cat.cpp \
-						WrongCat.cpp \
+						Dog.cpp \
 						WrongAnimal.cpp \
+						WrongCat.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 

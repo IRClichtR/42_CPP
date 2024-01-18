@@ -9,6 +9,7 @@ Dog::Dog(void) {
     std::cout << RED << "Dog default constructor called" << RESET << std::endl;
 
   this->setType("Dog");
+  this->_brain = new Brain();
 }
 
 Dog::Dog(const Dog &other) {
@@ -34,6 +35,8 @@ Dog::~Dog(void) {
 
   if (DEBUG)
     std::cout << RED << "Dog default destructor called" << RESET << std::endl;
+
+  delete this->_brain;
 }
 
 // Initialization constructor____________________________________________________//

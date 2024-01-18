@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <sstream>
 # include "Animal.hpp"
+# include "Brain.hpp"
 # include "Dog.hpp"
 # include "Cat.hpp"
 # include "WrongAnimal.hpp"
