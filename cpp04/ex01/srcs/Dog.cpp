@@ -18,6 +18,7 @@ Dog::Dog(const Dog &other) {
     std::cout << RED << "Dog copy constructor called" << RESET << std::endl;
 
   this->_type = other._type;
+  this->_brain = new Brain();
 }
 
 Dog& Dog::operator=(const Dog& other) {
@@ -25,8 +26,10 @@ Dog& Dog::operator=(const Dog& other) {
   if (DEBUG)
     std::cout << RED << "Dog overload operator= called" << RESET << std::endl;
 
-  if (this != &other)
+  if (this != &other) {
     this->_type = other._type;
+    this->_brain = new Brain();
+  }
 
   return (*this);
 }

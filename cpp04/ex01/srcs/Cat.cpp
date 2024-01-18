@@ -18,6 +18,7 @@ Cat::Cat(const Cat &other) {
     std::cout << RED << "Cat copy constructor called" << RESET << std::endl;
 
   this->_type = other._type;
+  this->_brain = new Brain();
 }
 
 Cat& Cat::operator=(const Cat& other) {
@@ -25,8 +26,10 @@ Cat& Cat::operator=(const Cat& other) {
   if (DEBUG)
     std::cout << RED << "Cat overload operator= called" << RESET << std::endl;
 
-  if (this != &other)
+  if (this != &other) {
     this->_type = other._type;
+    this->_brain = new Brain();
+  }
 
   return (*this);
 }
