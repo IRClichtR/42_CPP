@@ -5,36 +5,26 @@ int main(int ac, char **av) {
   if (!checkArgs(ac, av))
     return (1);
 
-  const Animal       *Jean = new Cat();
-  const Animal       *Ponyo = new Dog();
-  const Animal       *Franketienne = new Animal();
-  const WrongAnimal  *Bisounours = new WrongAnimal();
-  const WrongAnimal  *Zoulounours = new WrongCat();
+  Animal  **Maisounette = new Animal*[10];
+  for (int i = 0 ; i < 5 ; i++) {
 
-  // while (1) {
-  //
-  //   std::string usrInput = getUsrInput();
-  //
-  //   if (!usrInput.compare("Cat"))
-  //     Jean->makesound();
-  //   else if (!usrInput.compare("Dog"))
-  //     Ponyo->makesound();
-  //   else if (!usrInput.compare("Animal"))
-  //     Franketienne->makesound();
-  //   else if (!usrInput.compare("WrongCat"))
-  //     Zoulounours->makesound();
-  //   else if (!usrInput.compare("WrongAnimal"))
-  //     Bisounours->makesound();
-  //   else if (!usrInput.compare("exit"))
-  //     break ;
-  //
-  // }
-  //
-  // delete Jean;
-  // delete Ponyo;
-  // delete Franketienne;
-  // delete Bisounours;
-  // delete Zoulounours;
+    Maisounette[i] = new Dog();
+  }
+    std::cout << GREEN << "All dogs have been created" << RESET << std::endl;
+
+  for (int i = 5 ; i < 10 ; i++) {
+
+    Maisounette[i] = new Cat();
+  }
+    std::cout << GREEN << "All cats have been created" << RESET << std::endl;
+
+  for (int i = 0 ; i < 10 ; i++) {
+
+    delete  Maisounette[i];
+  }
+
+  std::cout << GREEN << "All animals have been destroyed" << RESET << std::endl;
+  delete [] Maisounette;
 
   return (0);
 }
