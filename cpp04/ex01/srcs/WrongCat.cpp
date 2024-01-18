@@ -7,6 +7,8 @@ WrongCat::WrongCat(void) {
 
   if (DEBUG)
     std::cout << RED << "WrongCat default constructor called" << RESET << std::endl;
+
+  this->setType("WrongCat");
 }
 
 WrongCat::WrongCat(const WrongCat &other) {
@@ -47,7 +49,7 @@ WrongCat::WrongCat(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  WrongCat::makesound(void) {
+void  WrongCat::makesound(void) const {
 
-  std::cout << YELLOW << this->_type << RESET << "There is No Alternative! You peasants must work to buy my food!" << std::endl; 
+  std::cout << YELLOW << this->_type << RESET << ": There is No Alternative! You peasants must work to buy my food!" << std::endl; 
 }

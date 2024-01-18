@@ -49,7 +49,7 @@ Cat::Cat(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  Cat::makesound(void) {
+void  Cat::makesound(void) const {
 
   std::cout << YELLOW << this->getType() << RESET << ": Cease the means of production!" << std::endl; 
 }

@@ -15,7 +15,7 @@ public:
 
   Cat(const std::string& name);
 
-  void  makesound();
+  void  makesound() const;
 
 };
 

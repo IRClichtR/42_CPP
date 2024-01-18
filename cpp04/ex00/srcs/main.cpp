@@ -5,11 +5,11 @@ int main(int ac, char **av) {
   if (!checkArgs(ac, av))
     return (1);
 
-  const Animal*       Jean = new Cat();
-  const Animal*       Ponyo = new Dog();
-  const Animal*       Franketienne = new Animal();
-  const WrongAnimal   Bisounours = new WrongAnimal();
-  const WrongAnimal   Zoulounours = new WrongCat();
+  const Animal       *Jean = new Cat();
+  const Animal       *Ponyo = new Dog();
+  const Animal       *Franketienne = new Animal();
+  const WrongAnimal  *Bisounours = new WrongAnimal();
+  const WrongAnimal  *Zoulounours = new WrongCat();
 
   while (1) {
 

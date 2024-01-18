@@ -62,7 +62,7 @@ std::string  WrongAnimal::getType(void) const {
 
 // Public methods _______________________________________________________________//
 
-void  WrongAnimal::makesound(void) {
+void  WrongAnimal::makesound(void) const {
 
   std::cout << YELLOW << this->getType() << RESET << ": Agrou Agrou !" << std::endl; 
 }

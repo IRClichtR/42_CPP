@@ -7,6 +7,8 @@ WrongAnimal::WrongAnimal(void) {
 
   if (DEBUG)
     std::cout << RED << "WrongAnimal default constructor called" << RESET << std::endl;
+
+  this->setType("WrongAnimal");
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &other) {
@@ -44,10 +46,23 @@ WrongAnimal::WrongAnimal(const std::string& name) {
   this->_type = name;
 }
 
+// Getters & Setters ____________________________________________________________//
+
+
+void  WrongAnimal::setType(const std::string& name) {
+
+  this->_type = name;
+}
+  
+std::string  WrongAnimal::getType(void) const {
+
+  return (this->_type);
+}
+
 
 // Public methods _______________________________________________________________//
 
-void  WrongAnimal::makesound(void) {
+void  WrongAnimal::makesound(void) const {
 
-  std::cout << YELLOW << this->_type << RESET << ": Agrou Agrou !" << std::endl; 
+  std::cout << YELLOW << this->getType() << RESET << ": Agrou Agrou !" << std::endl; 
 }

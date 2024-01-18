@@ -7,6 +7,8 @@ Cat::Cat(void) {
 
   if (DEBUG)
     std::cout << RED << "Cat default constructor called" << RESET << std::endl;
+
+  this->setType("Cat");
 }
 
 Cat::Cat(const Cat &other) {
@@ -47,7 +49,7 @@ Cat::Cat(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  Cat::makesound(void) {
+void  Cat::makesound(void) const {
 
-  std::cout << YELLOW << this->_type << RESET << ": Cease the means of production!" << std::endl; 
+  std::cout << YELLOW << this->getType() << RESET << ": Cease the means of production!" << std::endl; 
 }

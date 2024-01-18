@@ -15,7 +15,7 @@ public:
 
   WrongCat(const std::string &name);
 
-  void  makesound();
+  void  makesound() const;
 
 };
 

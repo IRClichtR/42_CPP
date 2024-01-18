@@ -35,14 +35,19 @@ std::string getUsrInput(void) {
 
   while (1) {
 
-    std::cout << BLUE << "enter an animal name <Dog> <Cat> <WrongCat> <exit>: " << RESET;
+    std::cout << BLUE << "enter an animal name <Animal> <WrongAnimal> <Dog> <Cat> <WrongCat> <exit>: " << RESET;
 
     std::getline(std::cin, input);
 
     if (std::cin.eof())
       break ;
 
-    if (!input.compare("Dog") || !input.compare("Cat") || !input.compare("WrongCat") || !input.compare("exit"))
+    if (!input.compare("Dog") 
+        || !input.compare("Cat") 
+        || !input.compare("Animal") 
+        || !input.compare("WrongAnimal") 
+        || !input.compare("WrongCat") 
+        || !input.compare("exit"))
       break ;
     else
       std::cout << RED << "Invalid command! *** a strange thing tries to raise from the ground but disappear instantly ***" << RESET << std::endl;

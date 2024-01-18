@@ -49,7 +49,7 @@ Dog::Dog(const std::string& name) {
 
 // Public methods _______________________________________________________________//
 
-void  Dog::makesound(void) {
+void  Dog::makesound(void) const {
 
   std::cout << YELLOW << this->getType() << RESET << ": Patriarchy must end now!" << std::endl; 
 }
