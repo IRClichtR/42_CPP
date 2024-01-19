@@ -9,7 +9,6 @@ Cat::Cat(void) {
     std::cout << RED << "Cat default constructor called" << RESET << std::endl;
 
   this->setType("Cat");
-  this->_brain = new Brain();
 }
 
 Cat::Cat(const Cat &other) {
@@ -35,8 +34,6 @@ Cat::~Cat(void) {
 
   if (DEBUG)
     std::cout << RED << "Cat default destructor called" << RESET << std::endl;
-
-  delete this->_brain;
 }
 
 // Initialization constructor____________________________________________________//

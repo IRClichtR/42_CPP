@@ -17,10 +17,6 @@ public:
 
   void  makesound() const;
 
-private:
-
-  Brain *_brain;
-
 };
 
 

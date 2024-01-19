@@ -25,7 +25,7 @@ int main(int ac, char **av) {
       Zoulounours->makesound();
     else if (!usrInput.compare("WrongAnimal"))
       Bisounours->makesound();
-    else if (!usrInput.compare("exit"))
+    else if (!usrInput.compare("exit") || std::cin.eof())
       break ;
 
   }
