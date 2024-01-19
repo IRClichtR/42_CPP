@@ -12,13 +12,15 @@ public:
   Brain(const Brain &);
   ~Brain(); 
 
-  Brain &operator=(const Brain &);
+  Brain               &operator=(const Brain &);
 
-  // void        addIdea(const std::string& idea);
+  const std::string&  getIdea(int i) const;
+  void                addIdea(const std::string& idea);
+  void                displayAllBrain() const;
 
 private:
 
-  std::string ideas[100];
+  std::string         ideas[100];
 };
 
 #endif // !BRAIN_HPP

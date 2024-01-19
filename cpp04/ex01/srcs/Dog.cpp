@@ -19,6 +19,9 @@ Dog::Dog(const Dog &other) {
 
   this->_type = other._type;
   this->_brain = new Brain();
+  for (int i = 0 ; i < 100 ; i++)
+    this->_brain[i] = other._brain[i];
+
 }
 
 Dog& Dog::operator=(const Dog& other) {
@@ -29,6 +32,8 @@ Dog& Dog::operator=(const Dog& other) {
   if (this != &other) {
     this->_type = other._type;
     this->_brain = new Brain();
+    for (int i = 0 ; i < 100 ; i++)
+      this->_brain[i] = other._brain[i];
   }
 
   return (*this);
@@ -39,7 +44,8 @@ Dog::~Dog(void) {
   if (DEBUG)
     std::cout << RED << "Dog default destructor called" << RESET << std::endl;
 
-  delete this->_brain;
+  if ((this->_brain))
+    delete this->_brain;
 }
 
 // Initialization constructor____________________________________________________//
@@ -50,6 +56,8 @@ Dog::Dog(const std::string& name) {
     std::cout << RED << "Dog _type initialization constructor called" << RESET << std::endl;
 
   this->_type = name;
+  this->_brain = new Brain();
+
 }
 
 

@@ -43,7 +43,8 @@ Cat::~Cat(void) {
   if (DEBUG)
     std::cout << RED << "Cat default destructor called" << RESET << std::endl;
 
-  delete this->_brain;
+  if (this->_brain)
+    delete this->_brain;
 }
 
 // Initialization constructor____________________________________________________//
@@ -53,6 +54,8 @@ Cat::Cat(const std::string& name) {
   if (DEBUG)
     std::cout << RED << "Cat _type initialization constructor called" << RESET << std::endl;
 
+
+  this->_brain = new Brain();
   this->_type = name;
 }
 
