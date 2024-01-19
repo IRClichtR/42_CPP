@@ -3,7 +3,7 @@
 
 // Coplian form _________________________________________________________________//
 
-Dog::Dog(void) {
+Dog::Dog(void) : Animal("Cat") {
 
   if (DEBUG)
     std::cout << RED << "Dog default constructor called" << RESET << std::endl;
@@ -66,4 +66,21 @@ Dog::Dog(const std::string& name) {
 void  Dog::makesound(void) const {
 
   std::cout << YELLOW << this->getType() << RESET << ": Patriarchy must end now!" << std::endl; 
+}
+
+// Getters and Setters __________________________________________________________//
+
+const std::string&  Dog::getAnIdea(int index) const {
+
+  return (this->_brain->getIdea(index));
+}
+
+void Dog::setAnIdea(const std::string& idea) {
+
+  this->_brain->addIdea(idea);
+}
+
+void  Dog::displayBrain() const {
+
+  this->_brain->displayAllBrain();
 }

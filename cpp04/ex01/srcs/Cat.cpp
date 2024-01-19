@@ -3,7 +3,7 @@
 
 // Coplian form _________________________________________________________________//
 
-Cat::Cat(void) {
+Cat::Cat(void) : Animal("Cat") {
 
   if (DEBUG)
     std::cout << RED << "Cat default constructor called" << RESET << std::endl;
@@ -65,4 +65,21 @@ Cat::Cat(const std::string& name) {
 void  Cat::makesound(void) const {
 
   std::cout << YELLOW << this->getType() << RESET << ": Cease the means of production!" << std::endl; 
+}
+
+// Getters and Setters __________________________________________________________//
+
+const std::string&  Cat::getAnIdea(int index) const {
+
+  return (this->_brain->getIdea(index));
+}
+
+void Cat::setAnIdea(const std::string& idea) {
+
+  this->_brain->addIdea(idea);
+}
+
+void  Cat::displayBrain() const {
+
+  this->_brain->displayAllBrain();
 }

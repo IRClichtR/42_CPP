@@ -3,7 +3,7 @@
 
 # include "define.hpp"
 
-class Dog : virtual public Animal {
+class Dog : public Animal {
 
 public:
 
@@ -15,7 +15,10 @@ public:
 
   Dog(const std::string& name);
 
-  void  makesound() const;
+  void                makesound() const;
+  void                displayBrain() const;
+  const std::string&  getAnIdea(int index) const;
+  void                setAnIdea(const std::string& idea);
 
 private:
 

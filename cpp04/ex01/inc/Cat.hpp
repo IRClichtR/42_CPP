@@ -15,11 +15,14 @@ public:
 
   Cat(const std::string& name);
 
-  void  makesound() const;
+  void                makesound() const;
+  void                displayBrain() const;
+  const std::string&  getAnIdea(int index) const;
+  void                setAnIdea(const std::string& idea);
 
 private:
 
-  Brain *_brain;
+  Brain               *_brain;
 
 };
 
