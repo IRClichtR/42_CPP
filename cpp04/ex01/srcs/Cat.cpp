@@ -19,6 +19,8 @@ Cat::Cat(const Cat &other) {
 
   this->_type = other._type;
   this->_brain = new Brain();
+  for (int i = 0 ; i < 100 ; i++)
+    this->_brain[i] = other._brain[i];
 }
 
 Cat& Cat::operator=(const Cat& other) {
@@ -29,6 +31,8 @@ Cat& Cat::operator=(const Cat& other) {
   if (this != &other) {
     this->_type = other._type;
     this->_brain = new Brain();
+    for (int i = 0 ; i < 100 ; i++)
+      this->_brain[i] = other._brain[i];
   }
 
   return (*this);
