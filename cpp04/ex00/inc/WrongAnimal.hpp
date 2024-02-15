@@ -1,29 +1,29 @@
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef WRONG_ANIMAL_HPP
+# define WRONG_ANIMAL_HPP
 
-# include "define.hpp"
-
+#include <string>
 class WrongAnimal {
 
 public:
 
-  // Canonical form
+//____________________ Coplian form //
+
   WrongAnimal();
   WrongAnimal(const WrongAnimal &);
   WrongAnimal &operator=(const WrongAnimal &);
   virtual ~WrongAnimal();
 
-  WrongAnimal(const std::string& name);
+//____________________ Member functions //
 
-  void          setType(const std::string& name);
-  std::string   getType(void) const;
-  virtual void  makesound() const;
+  void                      makeSound(void) const;
+  virtual const std::string getType() const;
+  virtual void              setType(std::string& name);
+
 
 protected:
-  
-  std::string  _type;
+
+  std::string               type;
+
 };
 
-
-
-#endif // !WRONGANIMAL_HPP
+#endif // !WRONG_ANIMAL_HPP

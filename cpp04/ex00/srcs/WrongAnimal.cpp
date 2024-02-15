@@ -1,68 +1,46 @@
 #include "define.hpp"
 
+//____________________ Coplian form //
 
-// Coplian form _________________________________________________________________//
+WrongAnimal::WrongAnimal() : type("Simple WrongAnimal") {
 
-WrongAnimal::WrongAnimal(void) {
-
-  if (DEBUG)
-    std::cout << RED << "WrongAnimal default constructor called" << RESET << std::endl;
-
-  this->setType("WrongAnimal");
+  std::cout << PURPLE << "WrongAnimal default constructor called" << RESET <<std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &other) {
 
-  if (DEBUG)
-    std::cout << RED << "WrongAnimal copy constructor called" << RESET << std::endl;
-
-  this->_type = other._type;
+  this->type = other.type;
+  std::cout << PURPLE << "WrongAnimal copy constructor called" << RESET <<std::endl;
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
 
-  if (DEBUG)
-    std::cout << RED << "WrongAnimal overload operator= called" << RESET << std::endl;
+  if (&other != this)
+    this->type = other.type;
 
-  if (this != &other)
-    this->_type = other._type;
-
+  std::cout << PURPLE << "WrongAnimal overload operator called" << RESET <<std::endl;
   return (*this);
 }
 
-WrongAnimal::~WrongAnimal(void) {
+WrongAnimal::~WrongAnimal() {
 
-  if (DEBUG)
-    std::cout << RED << "WrongAnimal default destructor called" << RESET << std::endl;
-}
-
-// Initialization constructor____________________________________________________//
-
-WrongAnimal::WrongAnimal(const std::string& name) {
-
-  if (DEBUG)
-    std::cout << RED << "WrongAnimal _type initialization constructor called" << RESET << std::endl;
-
-  this->_type = name;
-}
-
-// Getters & Setters ____________________________________________________________//
-
-
-void  WrongAnimal::setType(const std::string& name) {
-
-  this->_type = name;
-}
-  
-std::string  WrongAnimal::getType(void) const {
-
-  return (this->_type);
+  std::cout << PURPLE << "WrongAnimal default destructor called" << RESET <<std::endl;
 }
 
 
-// Public methods _______________________________________________________________//
+//____________________ Member functions //
 
-void  WrongAnimal::makesound(void) const {
+void  WrongAnimal::makeSound() const {
 
-  std::cout << YELLOW << this->getType() << RESET << ": Agrou Agrou !" << std::endl; 
+  std::cout << type << ": Hey I'm Human don't kill me for food!" << std::endl;
+}
+
+const std::string WrongAnimal::getType() const {
+
+  return (this->type);
+}
+
+void  WrongAnimal::setType(std::string& name) {
+
+  this->type = name;
 }

@@ -1,65 +1,47 @@
 #include "define.hpp"
+#include <string>
 
-// Coplian form _________________________________________________________________//
-Animal::Animal(void) {
+//____________________ Coplian form //
 
-  if (DEBUG)
-    std::cout << RED << "Animal default constructor called" << RESET << std::endl;
+Animal::Animal() : type("Simple Animal") {
 
-  this->setType("Animal");
+  std::cout << PURPLE << "Animal default constructor called" << RESET <<std::endl;
 }
 
 Animal::Animal(const Animal &other) {
 
-  if (DEBUG)
-    std::cout << RED << "Animal copy constructor called" << RESET << std::endl;
-
-  this->_type = other._type;
+  this->type = other.type;
+  std::cout << PURPLE << "Animal copy constructor called" << RESET <<std::endl;
 }
 
 Animal& Animal::operator=(const Animal& other) {
 
-  if (DEBUG)
-    std::cout << RED << "Animal overload operator= called" << RESET << std::endl;
+  if (&other != this)
+    this->type = other.type;
 
-  if (this != &other)
-    this->_type = other._type;
-
+  std::cout << PURPLE << "Animal overload operator called" << RESET <<std::endl;
   return (*this);
 }
 
-Animal::~Animal(void) {
+Animal::~Animal() {
 
-  if (DEBUG)
-    std::cout << RED << "Animal default destructor called" << RESET << std::endl;
+  std::cout << PURPLE << "Animal default destructor called" << RESET <<std::endl;
 }
 
-// Initialization constructor____________________________________________________//
 
-Animal::Animal(const std::string& name) {
+//____________________ Member functions //
 
-  if (DEBUG)
-    std::cout << RED << "Animal _type initialization constructor called" << RESET << std::endl;
+void  Animal::makeSound() const {
 
-  this->_type = name;
+  std::cout << type << ": Animal Farm is my favorite book" << std::endl;
 }
 
-// Getters & Setters ____________________________________________________________//
+const std::string Animal::getType() const {
 
-
-void  Animal::setType(const std::string& name) {
-
-  this->_type = name;
-}
-  
-std::string  Animal::getType(void) const {
-
-  return (this->_type);
+  return (this->type);
 }
 
-// Public methods _______________________________________________________________//
+void  Animal::setType(std::string& name) {
 
-void  Animal::makesound(void) const {
-
-  std::cout << YELLOW << this->getType() << RESET << ": Agrougrou!" << std::endl; 
+  this->type = name;
 }

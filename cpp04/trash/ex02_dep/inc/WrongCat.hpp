@@ -1,21 +1,22 @@
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
+# include "define.hpp"
+
 class WrongCat : public WrongAnimal {
 
 public:
 
-//____________________ Coplian form //
-
+  // Canonical form
   WrongCat();
   WrongCat(const WrongCat &);
   WrongCat &operator=(const WrongCat &);
   ~WrongCat();
 
-  // void  makeSound();
+  WrongCat(const std::string &name);
 
-private:
-  
+  void  makesound() const;
+
 };
 
 

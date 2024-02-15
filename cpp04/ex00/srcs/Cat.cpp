@@ -1,55 +1,35 @@
 #include "define.hpp"
 
+Cat::Cat () {
 
-// Coplian form _________________________________________________________________//
-
-Cat::Cat(void) {
-
-  if (DEBUG)
-    std::cout << RED << "Cat default constructor called" << RESET << std::endl;
-
-  this->setType("Cat");
+  this->type = "Cat";
+  std::cout << PURPLE << "Cat default constructor called" << RESET <<std::endl;
 }
 
-Cat::Cat(const Cat &other) {
+Cat::Cat(const Cat & other) {
 
-  if (DEBUG)
-    std::cout << RED << "Cat copy constructor called" << RESET << std::endl;
-
-  this->_type = other._type;
+  this->type = other.type; 
+  std::cout << PURPLE << "Cat copy constructor called" << RESET <<std::endl;
 }
 
-Cat& Cat::operator=(const Cat& other) {
+Cat& Cat::operator=(const Cat &other) {
 
-  if (DEBUG)
-    std::cout << RED << "Cat overload operator= called" << RESET << std::endl;
+  if (&other != this)
+    this->type = other.type; 
 
-  if (this != &other)
-    this->_type = other._type;
-
+  std::cout << PURPLE << "Cat overload operator called" << RESET <<std::endl;
   return (*this);
 }
 
-Cat::~Cat(void) {
+Cat::~Cat() {
 
-  if (DEBUG)
-    std::cout << RED << "Cat default destructor called" << RESET << std::endl;
-}
-
-// Initialization constructor____________________________________________________//
-
-Cat::Cat(const std::string& name) {
-
-  if (DEBUG)
-    std::cout << RED << "Cat _type initialization constructor called" << RESET << std::endl;
-
-  this->_type = name;
+  std::cout << PURPLE << "Cat default destructor called" << RESET <<std::endl;
 }
 
 
-// Public methods _______________________________________________________________//
+//____________________ Member functions //
 
-void  Cat::makesound(void) const {
+void  Cat::makeSound() const {
 
-  std::cout << YELLOW << this->getType() << RESET << ": Cease the means of production!" << std::endl; 
+  std::cout << this->type << ": Cat Power!" << std::endl;
 }

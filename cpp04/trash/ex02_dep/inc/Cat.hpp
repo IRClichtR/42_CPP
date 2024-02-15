@@ -1,21 +1,22 @@
 #ifndef CAT_HPP
 # define CAT_HPP
 
+# include "define.hpp"
+
 class Cat : public Animal {
 
 public:
 
-//____________________ Coplian form //
-
+  // Canonical form
   Cat();
   Cat(const Cat &);
   Cat &operator=(const Cat &);
   ~Cat();
 
-  void  makeSound() const;
+  Cat(const std::string& name);
 
-private:
-  
+  void  makesound() const;
+
 };
 
 

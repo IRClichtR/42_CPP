@@ -1,40 +1,51 @@
 #include "define.hpp"
 
-int main(int ac, char **av) {
+// int main(void) {
+//
+//   Animal      Foo;
+//   Cat         Pookie;
+//   Dog         Ponyo;
+//   WrongAnimal Human;
+//   WrongCat    SadCat;
+//
+//   std::cout << " ___ Test ___ " << std::endl;
+//   std::cout << Foo.getType() << std::endl;
+//   Foo.makeSound();
+//   std::cout << Pookie.getType() << std::endl;
+//   Pookie.makeSound();
+//   std::cout << Ponyo.getType() << std::endl;
+//   Ponyo.makeSound();
+//   std::cout << Human.getType() << std::endl;
+//   Human.makeSound();
+//   std::cout << SadCat.getType() << std::endl;
+//   SadCat.makeSound();
+//   return (0);
+// }
+//
+int main()
+{
+  const Animal* meta = new Animal();
+  const Animal* j = new Dog();
+  const Animal* i = new Cat();
+  const WrongAnimal* metata = new WrongAnimal();
+  const WrongAnimal* k = new WrongCat();
 
-  if (!checkArgs(ac, av))
-    return (1);
+  std::cout << meta->getType() << " " << std::endl;
+  std::cout << j->getType() << " " << std::endl;
+  std::cout << i->getType() << " " << std::endl;
+  std::cout << metata->getType() << " " << std::endl;
+  std::cout << k->getType() << " " << std::endl;
 
-  const Animal       *Jean = new Cat();
-  const Animal       *Ponyo = new Dog();
-  const Animal       *Franketienne = new Animal();
-  const WrongAnimal  *Bisounours = new WrongAnimal();
-  const WrongAnimal  *Zoulounours = new WrongCat();
-
-  while (1) {
-
-    std::string usrInput = getUsrInput();
-
-    if (!usrInput.compare("Cat"))
-      Jean->makesound();
-    else if (!usrInput.compare("Dog"))
-      Ponyo->makesound();
-    else if (!usrInput.compare("Animal"))
-      Franketienne->makesound();
-    else if (!usrInput.compare("WrongCat"))
-      Zoulounours->makesound();
-    else if (!usrInput.compare("WrongAnimal"))
-      Bisounours->makesound();
-    else if (!usrInput.compare("exit") || std::cin.eof())
-      break ;
-
-  }
-
-  delete Jean;
-  delete Ponyo;
-  delete Franketienne;
-  delete Bisounours;
-  delete Zoulounours;
-
-  return (0);
+  meta->makeSound();
+  j->makeSound();
+  i->makeSound(); //will output the cat sound!
+  metata->makeSound();
+  k->makeSound(); //will output the cat sound!
+  // ...
+  delete meta;
+  delete j;
+  delete i;
+  delete metata;
+  delete k;
+    return 0;
 }

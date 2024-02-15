@@ -1,55 +1,35 @@
 #include "define.hpp"
 
+Dog::Dog () {
 
-// Coplian form _________________________________________________________________//
-
-Dog::Dog(void) {
-
-  if (DEBUG)
-    std::cout << RED << "Dog default constructor called" << RESET << std::endl;
-
-  this->setType("Dog");
+  this->type = "Dog";
+  std::cout << PURPLE << "Dog default constructor called" << RESET <<std::endl;
 }
 
-Dog::Dog(const Dog &other) {
+Dog::Dog(const Dog & other) {
 
-  if (DEBUG)
-    std::cout << RED << "Dog copy constructor called" << RESET << std::endl;
-
-  this->_type = other._type;
+  this->type = other.type; 
+  std::cout << PURPLE << "Dog copy constructor called" << RESET <<std::endl;
 }
 
-Dog& Dog::operator=(const Dog& other) {
+Dog& Dog::operator=(const Dog &other) {
 
-  if (DEBUG)
-    std::cout << RED << "Dog overload operator= called" << RESET << std::endl;
+  if (&other != this)
+    this->type = other.type; 
 
-  if (this != &other)
-    this->_type = other._type;
-
+  std::cout << PURPLE << "Dog overload operator called" << RESET <<std::endl;
   return (*this);
 }
 
-Dog::~Dog(void) {
+Dog::~Dog() {
 
-  if (DEBUG)
-    std::cout << RED << "Dog default destructor called" << RESET << std::endl;
-}
-
-// Initialization constructor____________________________________________________//
-
-Dog::Dog(const std::string& name) {
-
-  if (DEBUG)
-    std::cout << RED << "Dog _type initialization constructor called" << RESET << std::endl;
-
-  this->_type = name;
+  std::cout << PURPLE << "Dog default destructor called" << RESET <<std::endl;
 }
 
 
-// Public methods _______________________________________________________________//
+//____________________ Member functions //
 
-void  Dog::makesound(void) const {
+void  Dog::makeSound() const {
 
-  std::cout << YELLOW << this->getType() << RESET << ": Patriarchy must end now!" << std::endl; 
+  std::cout << this->type << ": Dog Power!" << std::endl;
 }

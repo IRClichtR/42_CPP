@@ -1,55 +1,35 @@
 #include "define.hpp"
 
+WrongCat::WrongCat () {
 
-// Coplian form _________________________________________________________________//
-
-WrongCat::WrongCat(void) {
-
-  if (DEBUG)
-    std::cout << RED << "WrongCat default constructor called" << RESET << std::endl;
-
-  this->setType("WrongCat");
+  this->type = "WrongCat";
+  std::cout << PURPLE << "WrongCat default constructor called" << RESET <<std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &other) {
+WrongCat::WrongCat(const WrongCat & other) {
 
-  if (DEBUG)
-    std::cout << RED << "WrongCat copy constructor called" << RESET << std::endl;
-
-  this->_type = other._type;
+  this->type = other.type; 
+  std::cout << PURPLE << "WrongCat copy constructor called" << RESET <<std::endl;
 }
 
-WrongCat& WrongCat::operator=(const WrongCat& other) {
+WrongCat& WrongCat::operator=(const WrongCat &other) {
 
-  if (DEBUG)
-    std::cout << RED << "WrongCat overload operator= called" << RESET << std::endl;
+  if (&other != this)
+    this->type = other.type; 
 
-  if (this != &other)
-    this->_type = other._type;
-
+  std::cout << PURPLE << "WrongCat overload operator called" << RESET <<std::endl;
   return (*this);
 }
 
-WrongCat::~WrongCat(void) {
+WrongCat::~WrongCat() {
 
-  if (DEBUG)
-    std::cout << RED << "WrongCat default destructor called" << RESET << std::endl;
-}
-
-// Initialization constructor____________________________________________________//
-
-WrongCat::WrongCat(const std::string& name) {
-
-  if (DEBUG)
-    std::cout << RED << "WrongCat _type initialization constructor called" << RESET << std::endl;
-
-  this->_type = name;
+  std::cout << PURPLE << "WrongCat default destructor called" << RESET <<std::endl;
 }
 
 
-// Public methods _______________________________________________________________//
+//____________________ Member functions //
 
-void  WrongCat::makesound(void) const {
-
-  std::cout << YELLOW << this->_type << RESET << ": There is No Alternative! You peasants must work to buy my food!" << std::endl; 
-}
+// void  WrongCat::makeSound() {
+//
+//   std::cout << this->type << ": I can't catch any mouse. Oh what a sad little WrongCat I am!" << std::endl;
+// }

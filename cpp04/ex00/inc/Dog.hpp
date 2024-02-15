@@ -1,22 +1,21 @@
 #ifndef DOG_HPP
 # define DOG_HPP
 
-# include "define.hpp"
-
-class Dog : virtual public Animal {
+class Dog : public Animal {
 
 public:
 
-  // Canonical form
+//____________________ Coplian form //
+
   Dog();
   Dog(const Dog &);
   Dog &operator=(const Dog &);
   ~Dog();
 
-  Dog(const std::string& name);
+  void  makeSound() const;
 
-  void  makesound() const;
-
+private:
+  
 };
 
 

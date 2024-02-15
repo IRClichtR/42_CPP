@@ -43,7 +43,7 @@ int main(int ac, char **av) {
 
   // std::cout << GREEN << "All animals have been destroyed" << RESET << std::endl;
   // std::cout << GREEN << "TEST COPY OF AN ELEMENT OF THE TAB AFTER TAB DELETION" << RESET << std::endl;
-  std::cout << "Adress of the Brain of index [4] " << &test->_brain << std::endl;
+  // std::cout << "Adress of the Brain of index [4] " << &test->_brain << std::endl;
   // std::cout << "Adress of the copy of [4]" << &random2 << std::endl;
   // std::cout << "Adress of the Brain of index [4] " << &test2->_brain << std::endl;
   //
