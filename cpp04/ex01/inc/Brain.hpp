@@ -1,6 +1,8 @@
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 
+#include "define.hpp"
+
 class Brain {
 
 public:
@@ -14,11 +16,14 @@ public:
 
 //____________________ Accessors // 
 
-  // const std::string&  getIdea() const;
-  // const std::string&  getAllIdeas() const;
-  // const void  addIdea() const;
-  // const void  delIdea() const;
-  void  initBrain();
+  const std::string&  getIdea(int index) const;
+  void                displayAllIdeas() const;
+
+//____________________ Add Del Create Brain // 
+
+  void                addIdea(const std::string& idea);
+  void                delIdea(int index);
+  void                initBrain();
 
 private:
 

@@ -19,18 +19,15 @@
 # include <string>
 # include <stdlib.h>
 # include <sstream>
+# include "Brain.hpp"
 # include "Animal.hpp"
 # include "Dog.hpp"
 # include "Cat.hpp"
-# include "Brain.hpp"
 
 //Variables and return values__________________________________________________/
 
 extern bool DEBUG;
 
-
-# define SUCCESS 0
-# define ERROR -42
 
 //Utils Functions______________________________________________________________/
 

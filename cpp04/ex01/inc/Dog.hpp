@@ -1,6 +1,8 @@
 #ifndef DOG_HPP
 # define DOG_HPP
 
+#include "define.hpp"
+
 class Dog : public Animal {
 
 public:
@@ -16,6 +18,8 @@ public:
 
 private:
   
+  Brain* _brain;
+
 };
 
 

@@ -10,7 +10,7 @@ INC_DIR		= ./inc
 #Compilation tools_________________________________________________________________/
 
 CXX				= c++ -o
-CFLAGS		= -Werror -Wextra -Wall -std=c++98
+CFLAGS		= -Werror -Wextra -Wall -std=c++98 -fsanitize=address
 INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 
 

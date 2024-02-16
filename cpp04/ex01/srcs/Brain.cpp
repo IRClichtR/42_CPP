@@ -29,6 +29,46 @@ Brain&  Brain::operator=(const Brain &other) {
   return (*this);
 }
 
+Brain::~Brain() {
+
+  delete [] this->_ideas;
+  std::cout << PURPLE << "Brain default destructor called" << RESET <<std::endl;
+}
+
+//____________________ Accessors // 
+
+  const std::string&  Brain::getIdea(int index) const {
+
+    return (this->_ideas[index]);
+  }
+
+  void  Brain::displayAllIdeas() const {
+
+    for (int i = 0; !this->_ideas[i].empty(); i++)
+      std::cout << "[" << i << "] " << this->_ideas[i] << std::endl;
+
+  }
+
+//____________________ Add Del Create Brain // 
+
+  void  Brain::addIdea(const std::string& idea) {
+
+    int i = 0;
+    while (!this->_ideas[i].empty() && i < 100)
+      i++;
+    if (i < 100)
+      this->_ideas[i] = idea;
+    else {
+      std::cout << RED << "Brain is full!" << RESET << std::endl;
+    }
+  }
+
+  void  Brain::delIdea(int index) {
+
+    if (index < 100 && !this->_ideas[index].empty())
+      this->_ideas[index].clear();
+  }
+
 void  Brain::initBrain() {
 
   this->_ideas = new std::string[100];
@@ -36,8 +76,3 @@ void  Brain::initBrain() {
   std::cout << this->_ideas[0] << std::endl;
 }
 
-Brain::~Brain() {
-
-  delete [] this->_ideas;
-  std::cout << PURPLE << "Brain default destructor called" << RESET <<std::endl;
-}
