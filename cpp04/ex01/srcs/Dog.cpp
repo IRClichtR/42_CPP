@@ -10,21 +10,16 @@ Dog::Dog () {
 Dog::Dog(const Dog & other) {
 
   this->type = other.type;
-  this->_brain = new Brain;
+  this->_brain = new Brain(*other._brain);
 
-  for (int i = 0; i < 100; i++) 
-    this->_brain[i] = other._brain[i];
-  std::cout << PURPLE << "Cat copy constructor called" << RESET <<std::endl;
+  std::cout << PURPLE << "Dog copy constructor called" << RESET <<std::endl;
 }
 
 Dog& Dog::operator=(const Dog &other) {
 
   if (&other != this) {
     this->type = other.type; 
-    this->_brain = new Brain;
-
-    for (int i = 0; i < 100; i++) 
-      this->_brain[i] = other._brain[i];
+    this->_brain = new Brain(*other._brain);
   }
 
   std::cout << PURPLE << "Dog overload operator called" << RESET <<std::endl;
@@ -44,3 +39,13 @@ void  Dog::makeSound() const {
 
   std::cout << this->type << ": Dog Power!" << std::endl;
 }
+
+void  Dog::displayBrain() const {
+
+  this->_brain->displayAllIdeas();
+}
+
+void  Dog::newIdea(std::string& idea) {
+
+    this->_brain->addIdea(idea);
+  }

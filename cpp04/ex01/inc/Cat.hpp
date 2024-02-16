@@ -17,6 +17,8 @@ public:
 //____________________ Sound Maker //
 
   void  makeSound() const;
+  void  displayBrain() const;
+  void  newIdea(std::string& idea);
 
 private:
 

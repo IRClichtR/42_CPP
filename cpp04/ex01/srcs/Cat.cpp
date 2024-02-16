@@ -10,10 +10,8 @@ Cat::Cat () {
 Cat::Cat(const Cat & other) {
 
   this->type = other.type;
-  this->_brain = new Brain;
+  this->_brain = new Brain(*other._brain);
 
-  for (int i = 0; i < 100; i++) 
-    this->_brain[i] = other._brain[i];
   std::cout << PURPLE << "Cat copy constructor called" << RESET <<std::endl;
 }
 
@@ -21,10 +19,7 @@ Cat& Cat::operator=(const Cat &other) {
 
   if (&other != this) {
     this->type = other.type; 
-    this->_brain = new Brain;
-
-    for (int i = 0; i < 100; i++) 
-      this->_brain[i] = other._brain[i];
+    this->_brain = new Brain(*other._brain);
   }
 
   std::cout << PURPLE << "Cat overload operator called" << RESET <<std::endl;
@@ -43,3 +38,13 @@ void  Cat::makeSound() const {
 
   std::cout << this->type << ": Cat Power!" << std::endl;
 }
+
+void  Cat::displayBrain() const {
+
+  this->_brain->displayAllIdeas();
+}
+
+void  Cat::newIdea(std::string& idea) {
+
+    this->_brain->addIdea(idea);
+  }
