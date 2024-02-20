@@ -5,12 +5,12 @@ class Bureaucrat {
 
 public:
 
-  Bureaucrat(std::string name, unsigned int level);
+  Bureaucrat(std:: string name, unsigned int level);
   Bureaucrat(const Bureaucrat &);
   Bureaucrat &operator=(const Bureaucrat &);
   ~Bureaucrat();
 
-  std::string&        getName() const;
+  const std::string&        getName() const;
   unsigned int        getGrade() const;
   
   void                GradeTooHighException() const;
@@ -20,7 +20,7 @@ public:
 
 private:
   
-  const std::string   _name;
+  std::string         _name;
   unsigned int        _level;
 
 };

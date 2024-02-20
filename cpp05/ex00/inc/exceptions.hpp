@@ -1,7 +1,7 @@
 #ifndef EXCEPTIONS_HPP
 # define EXCEPTIONS_HPP
 
-class tooHighExceptioon {
+class tooHighException {
 
 public:
 
@@ -10,7 +10,7 @@ public:
   }
 };
 
-class tooLowExceptioon {
+class tooLowException {
 
 public:
 
