@@ -5,22 +5,26 @@ class Bureaucrat {
 
 public:
 
-  Bureaucrat();
-  Bureaucrat(const Bureaucrat &) = default;
-  Bureaucrat &operator=(const Bureaucrat &) = default;
+  Bureaucrat(std::string name, unsigned int level);
+  Bureaucrat(const Bureaucrat &);
+  Bureaucrat &operator=(const Bureaucrat &);
   ~Bureaucrat();
 
-  std::string&  getName() const;
-  std::string&  getGrade() const;
+  std::string&        getName() const;
+  unsigned int        getGrade() const;
   
-  const void  GradeTooHighException() const;
-  const void  GradeTooLowException() const;
+  void                GradeTooHighException() const;
+  void                GradeTooLowException() const;
+  void                incGrade();
+  void                decGrade();
 
 private:
   
-  const std::string         _name;
-  unsigned int              _level;
+  const std::string   _name;
+  unsigned int        _level;
 
 };
+
+std::ostream& operator<<(std::ostream&, const Bureaucrat&);
 
 #endif // !BUREAUCRAT_HPP

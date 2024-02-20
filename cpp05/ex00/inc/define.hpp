@@ -19,7 +19,8 @@
 # include <string>
 # include <stdlib.h>
 # include <sstream>
-# include "Bureaucrate.hpp"
+# include "exceptions.hpp"
+# include "Bureaucrat.hpp"
 
 //Variables and return values__________________________________________________/
 

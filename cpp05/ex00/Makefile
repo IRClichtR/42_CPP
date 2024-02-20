@@ -18,12 +18,7 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 
 SRCS_DIR	= ./srcs
 SRCS			:= \
-						utils.cpp \
-						Animal.cpp \
-						Dog.cpp \
-						Cat.cpp \
-						WrongCat.cpp \
-						WrongAnimal.cpp \
+						Bureaucrat.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
