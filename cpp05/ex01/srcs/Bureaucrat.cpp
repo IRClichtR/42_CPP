@@ -21,10 +21,9 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int level) : _name(name), _lev
   std::cout << PURPLE << "Bureaucrat Default Constructor called" << RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) {
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _level(other._level) {
 
   std::cout << PURPLE << "Bureaucrat copy Constructor called" << RESET << std::endl;
-  this->_level = other.getGrade();
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
@@ -75,7 +74,7 @@ void  Bureaucrat::decGrade(unsigned int amount) {
   try {
 
     if (this->getGrade() + amount > 150)
-      throw Bureaucrat::GradeTooLowException();
+      throw Bureaucrat::GradeTooLowException(); 
   }
   catch (Bureaucrat::GradeTooLowException& e) {
   

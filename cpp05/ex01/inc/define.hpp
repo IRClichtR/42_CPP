@@ -19,8 +19,8 @@
 # include <string>
 # include <stdlib.h>
 # include <sstream>
-# include "Form.hpp"
 # include "Bureaucrat.hpp"
+# include "Form.hpp"
 
 //Variables and return values__________________________________________________/
 

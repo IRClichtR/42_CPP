@@ -12,18 +12,18 @@ public:
   Form &operator=(const Form &);
   ~Form();
 
-  void                beSigned(bool value);
+  void                beSigned(bool value, const Bureaucrat& signing);
 
   bool                getIsSigned() const;
   const std::string&  getName() const;
-  const unsigned int  getGradeToSign() const;
-  const unsigned int  getGradeToExec() const;
+  unsigned int        getGradeToSign() const;
+  unsigned int        getGradeToExec() const;
 
   class GradeTooHighException : public std::exception {
 
     public:
       const char* what() const throw() {
-        return ("Grade too High to Handle Form!")
+        return ("Grade too High to Handle Form!");
       }
   };
 
@@ -31,7 +31,7 @@ public:
 
     public:
       const char* what() const throw() {
-        return ("Grade too Low to Handle Form!")
+        return ("Grade too Low to Handle Form!");
       }
   };
 
@@ -44,5 +44,7 @@ private:
 
   Form();
 };
+
+std::ostream& operator<<(std::ostream&, const Form&);
 
 #endif // !FORM_HPP
