@@ -2,24 +2,37 @@
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int level) : _name(name), _level(level) {
 
-  std::cout << PURPLE << "Bureaucrat Default constructor called" << RESET << std::endl;
+  try {
+
+    if (this->_level < 1)
+      throw Bureaucrat::GradeTooHighException();
+    else if (this->_level > 150)
+      throw Bureaucrat::GradeTooLowException();
+  }
+  catch (const Bureaucrat::GradeTooHighException& e) {
+
+    std::cout << this->getName() << ": " << RED << e.what() << RESET << std::endl;
+  }
+  catch (const Bureaucrat::GradeTooLowException& e) {
+
+    std::cout << this->getName() << ": " << RED << e.what() << RESET << std::endl;
+  }
+  
+  std::cout << PURPLE << "Bureaucrat Default Constructor called" << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) {
 
-  this->_level = other._level;
-  this->_name = other._name;
-  std::cout << PURPLE << "Bureaucrat copy constructor called" << RESET << std::endl;
+  std::cout << PURPLE << "Bureaucrat copy Constructor called" << RESET << std::endl;
+  *this = other;
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 
-  if (&other != this) {
-    this->_level = other._level;
-    this->_name = other._name;
-  }
+  std::cout << PURPLE << "Bureaucrat overload operator = called" << RESET << std::endl;
+  if (this != &other)
+    this->_level = other.getGrade();
   return (*this);
-  std::cout << PURPLE << "Bureaucrat overload = operator called" << RESET << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -36,32 +49,41 @@ unsigned int Bureaucrat::getGrade() const {
   return (this->_level);
 }
 
-void  Bureaucrat::GradeTooHighException() const {
+void  Bureaucrat::setGrade(unsigned int newLevel) {
 
-  if (this->_level < 1)
-    throw tooHighException();
-} 
-
-void  Bureaucrat::GradeTooLowException() const {
-
-  if (this->_level > 150)
-    throw tooLowException();
+  this->_level = newLevel;
 }
 
-void  Bureaucrat::incGrade() {
+void  Bureaucrat::incGrade(unsigned int amount) {
 
-  if (this->_level - 1 == 0)
-    throw tooHighException();
-  else 
-    this->_level -= 1;
+  std::cout << "amount= "<< amount << " | present level= " << this->getGrade() << std::endl;
+  try {
+
+    if (this->getGrade() <= amount)
+      throw Bureaucrat::GradeTooHighException();
+  }
+  catch (Bureaucrat::GradeTooHighException& e) {
+
+    std::cout << this->getName() << ": " << RED << e.what() << RESET << std::endl;
+    return ;
+  }
+
+  this->setGrade(this->_level - amount);
 }
 
-void  Bureaucrat::decGrade() {
+void  Bureaucrat::decGrade(unsigned int amount) {
 
-  if (this->_level + 1 == 0)
-    throw tooLowException();
-  else 
-    this->_level += 1;
+  try {
+
+    if (this->getGrade() + amount > 150)
+      throw Bureaucrat::GradeTooLowException();
+  }
+  catch (Bureaucrat::GradeTooLowException& e) {
+  
+    std::cout << this->getName() << ": " << RED << e.what() << RESET << std::endl;
+    return ;
+  }
+  this->setGrade(this->_level + amount);
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {

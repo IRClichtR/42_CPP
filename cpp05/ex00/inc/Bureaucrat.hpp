@@ -10,17 +10,29 @@ public:
   Bureaucrat &operator=(const Bureaucrat &);
   ~Bureaucrat();
 
-  const std::string&        getName() const;
+  const std::string&  getName() const;
   unsigned int        getGrade() const;
-  
-  void                GradeTooHighException() const;
-  void                GradeTooLowException() const;
-  void                incGrade();
-  void                decGrade();
+  void                setGrade(unsigned int newGrade);
+  void                incGrade(unsigned int amount);
+  void                decGrade(unsigned int amount);
+
+  class GradeTooHighException : public std::exception {
+  public:
+    const char* what() const throw() {
+      return ("Grade is too High ( < 1)");
+    }
+  };
+
+  class GradeTooLowException : public std::exception {
+  public:
+    const char* what() const throw() {
+      return ("Grade is too Low ( > 150)");
+    }
+  };
 
 private:
   
-  std::string         _name;
+  const std::string   _name;
   unsigned int        _level;
 
 };
