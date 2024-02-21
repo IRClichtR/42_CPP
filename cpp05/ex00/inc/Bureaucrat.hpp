@@ -10,6 +10,7 @@ public:
   Bureaucrat &operator=(const Bureaucrat &);
   ~Bureaucrat();
 
+  void                checkGrade() const;
   const std::string&  getName() const;
   unsigned int        getGrade() const;
   void                setGrade(unsigned int newGrade);

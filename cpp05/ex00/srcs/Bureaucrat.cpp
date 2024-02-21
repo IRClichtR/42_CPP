@@ -2,33 +2,23 @@
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int level) : _name(name), _level(level) {
 
-  try {
-
-    if (this->_level < 1)
-      throw Bureaucrat::GradeTooHighException();
-    else if (this->_level > 150)
-      throw Bureaucrat::GradeTooLowException();
-  }
-  catch (const Bureaucrat::GradeTooHighException& e) {
-
-    std::cout << this->getName() << ": " << RED << e.what() << RESET << std::endl;
-  }
-  catch (const Bureaucrat::GradeTooLowException& e) {
-
-    std::cout << this->getName() << ": " << RED << e.what() << RESET << std::endl;
-  }
-  
+  this->checkGrade();
   std::cout << PURPLE << "Bureaucrat Default Constructor called" << RESET << std::endl;
+  return ;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) {
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _level(other._level) {
 
+  this->checkGrade();
+  std::cout << PURPLE << "Bureaucrat Default Constructor called" << RESET << std::endl;
   std::cout << PURPLE << "Bureaucrat copy Constructor called" << RESET << std::endl;
-  *this = other;
+  return ;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 
+  this->checkGrade();
+  std::cout << PURPLE << "Bureaucrat Default Constructor called" << RESET << std::endl;
   std::cout << PURPLE << "Bureaucrat overload operator = called" << RESET << std::endl;
   if (this != &other)
     this->_level = other.getGrade();
@@ -38,6 +28,21 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 Bureaucrat::~Bureaucrat() {
 
   std::cout << PURPLE << "Bureaucrat Default destructor called" << RESET << std::endl;
+}
+
+void  Bureaucrat::checkGrade() const {
+
+  try {
+
+    if (this->_level < 1)
+      throw Bureaucrat::GradeTooHighException();
+    else if (this->_level > 150)
+      throw Bureaucrat::GradeTooLowException();
+  }
+  catch (const std::exception& e) {
+
+    std::cerr << this->getName() << ": " << RED << e.what() << RESET << std::endl;
+  }
 }
 
 const std::string&  Bureaucrat::getName() const {
