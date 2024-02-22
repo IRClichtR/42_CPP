@@ -56,8 +56,8 @@ void  Bureaucrat::downGrade() {
 void  Bureaucrat::signForm(Form& F) {
 
   if (F.getGradeToSign() < this->_grade) {
-    std::string error_msg = this->getName() + " couldn’t sign " + F.getName() + " because ";
-    throw(GradeTooLowException(error_msg));
+    // std::string error_msg = this->getName() + " couldn’t sign " + F.getName() + " because ";
+    throw(GradeTooLowException());
   }
   else {
     F.beSigned(*this);

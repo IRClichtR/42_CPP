@@ -30,23 +30,25 @@ public:
       }
   };
 
-  class   GradeTooLowException : public std::exception {
-    public:
-      GradeTooLowException() {}
-      GradeTooLowException(const std::string& error_msg) : _message(error_msg) {}
-
-      const char * defaultMsg() const throw() {
-        return ("Grade too Low!");
-      }
-
-      const char * signingMsg() const throw() {
-        return (_message.c_str());
-      }
-
-    private:
-      std::string _message;
+  class GradeTooLowException : public std::exception {
+  public:
+    virtual const char * what() const throw() {
+      return ("Grade Too Low!");
+    }
   };
-
+  // class   GradeTooLowException : public std::exception {
+  //   public:
+  //     GradeTooLowException() throw() {}
+  //     GradeTooLowException(const std::string& error_msg) throw() : _message(error_msg) {}
+  //
+  //     virtual const char * what() const throw() {
+  //       return (_message.empty() ? "Grade too Low!" : _message.c_str());
+  //     }
+  //
+  //   private:
+  //     std::string _message;
+  // };
+  //
 private:
 
   const std::string&  _name;
