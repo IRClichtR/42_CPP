@@ -1,84 +1,54 @@
 #include "define.hpp"
 
-Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade, bool signStatus) : _name(name), _gradeToSign(signGrade), _gradeToExec(execGrade), _isSigned(signStatus) {
+Form::Form(std::string& name, unsigned int gToSign, unsigned int gToExec) : _name(name), _gToSign(gToSign), _gToExec(gToExec), _signStatus(false) {
 
-  try {
-    if (this->_gradeToSign < 1 || this->_gradeToExec < 1)
-      throw Form::GradeTooHighException();
-    if (this->_gradeToSign > 150 || this->_gradeToExec > 150)
-      throw Form::GradeTooLowException();
-  }
-  catch (Form::GradeTooLowException& e) {
-    std::cout << this << RED << e.what() << RESET << std::endl;
-  }
-  catch (Form::GradeTooHighException& e) {
-    std::cout << this << RED << e.what() << RESET << std::endl;
-  }
-
-  std::cout << PURPLE << "Form default Constructor called" << RESET << std::endl;
-  std::cout << GREEN << this << " created " << RESET << std::endl;
+  this->checkGrade();
+  std::cout << PURPLE << "Default constructor called" << RESET << std::endl;
 }
 
-Form::Form(const Form& other): _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec), _isSigned(other._isSigned) {
+Form::Form(const Form &other) : _name(other._name), _gToSign(other._gToSign), _gToExec(other._gToExec), _signStatus(false) {
 
-  std::cout << PURPLE << "Form copy Constructor called" << RESET << std::endl;
-  std::cout << this << " created " << std::endl;
+  this->checkGrade();
+  std::cout << PURPLE << "Copy constructor called" << RESET << std::endl;
 }
 
 Form& Form::operator=(const Form &other) {
-
-  std::cout << PURPLE << "Form assignment copy Constructor called" << RESET << std::endl;
-
+  
+  this->checkGrade();
   if (this != &other)
-    this->_isSigned = other.getIsSigned();
+    this->_signStatus = other.getSignStatus();
+
+  std::cout << PURPLE << "Assignment operator called" << RESET << std::endl;
   return (*this);
 }
 
-Form::~Form() {
+Form::~Form() {std::cout << PURPLE << "Default destructor called" << RESET << std::endl;}
+  
 
-  std::cout << PURPLE << "Form Destructor called" << RESET << std::endl;
+const std::string&  Form::getName() const {return (this->_name);}
+unsigned int        Form::getGradeToSign() const {return (this->_gToSign);}
+unsigned int        Form::getGradeToExec() const {return (this->_gToExec);}
+bool                Form::getSignStatus() const {return (this->_signStatus);}
+
+void  Form::checkGrade() const {
+
+  if (this->_gToExec < 1 || this->_gToSign < 1)
+    throw GradeTooHighException();
+  else if (this->_gToExec > 150 || this->_gToSign > 150)
+    throw GradeTooLowException();
 }
 
-void  Form::beSigned(bool value, const Bureaucrat& signing) {
+void  Form::beSigned(const Bureaucrat&) {
 
-  try {
-    if (signing.getGrade() < this->getGradeToSign())
-      throw (Form::GradeTooHighException());
-    else if (signing.getGrade() > this->getGradeToSign())
-      throw (Form::GradeTooLowException());
-  }
-  catch (Form::GradeTooLowException& e) {
-    std::cout << this << RED << e.what() << RESET << std::endl;
-  }
-  catch (Form::GradeTooHighException& e) {
-    std::cout << this << RED << e.what() << RESET << std::endl;
-  }
-
-  this->_isSigned = value;
+  this->checkGrade();
+  this->_signStatus = true;
 }
 
-bool  Form::getIsSigned() const {
+std::ostream& operator<<(std::ostream& os, const Form& F) {
 
-  return (this->_isSigned);
-}
+  F.checkGrade();
+  std::string signStatus = F.getSignStatus() ? "Signed" : "Not Signed"; 
 
-const std::string& Form::getName() const {
-
-  return (this->_name);
-}
-
-unsigned int Form::getGradeToSign() const {
-
-  return (this->_gradeToSign);
-}
-
-unsigned int Form::getGradeToExec() const {
-
-  return (this->_gradeToExec);
-}
-
-std::ostream& operator<<(std::ostream& os, const Form& form) {
-
-  os << form.getName() << "_sign " << form.getGradeToSign() << " _exec " << form.getGradeToExec() << std::endl;
-  return (os);
+  os << F.getName() << " | Grade to Sign: " << F.getGradeToSign() << " | Grade to Exec: " << F.getGradeToExec() << " | Status: " << signStatus << std::endl;
+  return (os); 
 }

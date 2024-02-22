@@ -1,42 +1,50 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+# include "define.hpp"
+// # include "Form.hpp"
+
+class Form;
+
 class Bureaucrat {
 
 public:
 
-  Bureaucrat(std:: string name, unsigned int level);
+  Bureaucrat(std::string& name, unsigned int grade);
   Bureaucrat(const Bureaucrat &);
   Bureaucrat &operator=(const Bureaucrat &);
   ~Bureaucrat();
 
   const std::string&  getName() const;
   unsigned int        getGrade() const;
-  void                setGrade(unsigned int newGrade);
-  void                incGrade(unsigned int amount);
-  void                decGrade(unsigned int amount);
 
-  class GradeTooHighException : public std::exception {
-  public:
-    const char* what() const throw() {
-      return ("Grade is too High ( < 1)");
-    }
+  void  checkGrade() const;
+  void  upGrade();
+  void  downGrade();
+  void  signForm(Form&);
+
+  class   GradeTooHighException : public std::exception {
+    public:
+      virtual const char * what() const throw() {
+        return ("Grade too High!");
+      }
   };
 
-  class GradeTooLowException : public std::exception {
-  public:
-    const char* what() const throw() {
-      return ("Grade is too Low ( > 150)");
-    }
+  class   GradeTooLowException : public std::exception {
+    public:
+      virtual const char * what() const throw() {
+        return ("Grade too Low!");
+      }
   };
 
 private:
-  
-  const std::string   _name;
-  unsigned int        _level;
 
+  const std::string&  _name;
+  unsigned int        _grade;
+
+  Bureaucrat();
 };
 
-std::ostream& operator<<(std::ostream&, const Bureaucrat&);
+std::ostream&  operator<<(std::ostream&, const Bureaucrat&);
 
 #endif // !BUREAUCRAT_HPP
