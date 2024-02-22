@@ -32,9 +32,19 @@ public:
 
   class   GradeTooLowException : public std::exception {
     public:
-      virtual const char * what() const throw() {
+      GradeTooLowException() {}
+      GradeTooLowException(const std::string& error_msg) : _message(error_msg) {}
+
+      const char * defaultMsg() const throw() {
         return ("Grade too Low!");
       }
+
+      const char * signingMsg() const throw() {
+        return (_message.c_str());
+      }
+
+    private:
+      std::string _message;
   };
 
 private:

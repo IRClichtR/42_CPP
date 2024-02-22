@@ -3,13 +3,13 @@
 Form::Form(std::string& name, unsigned int gToSign, unsigned int gToExec) : _name(name), _gToSign(gToSign), _gToExec(gToExec), _signStatus(false) {
 
   this->checkGrade();
-  std::cout << PURPLE << "Default constructor called" << RESET << std::endl;
+  std::cout << PURPLE << "Form: Default constructor called" << RESET << std::endl;
 }
 
 Form::Form(const Form &other) : _name(other._name), _gToSign(other._gToSign), _gToExec(other._gToExec), _signStatus(false) {
 
   this->checkGrade();
-  std::cout << PURPLE << "Copy constructor called" << RESET << std::endl;
+  std::cout << PURPLE << "Form: Copy constructor called" << RESET << std::endl;
 }
 
 Form& Form::operator=(const Form &other) {
@@ -18,11 +18,11 @@ Form& Form::operator=(const Form &other) {
   if (this != &other)
     this->_signStatus = other.getSignStatus();
 
-  std::cout << PURPLE << "Assignment operator called" << RESET << std::endl;
+  std::cout << PURPLE << "Form: Assignment operator called" << RESET << std::endl;
   return (*this);
 }
 
-Form::~Form() {std::cout << PURPLE << "Default destructor called" << RESET << std::endl;}
+Form::~Form() {std::cout << PURPLE << "Form: Default destructor called" << RESET << std::endl;}
   
 
 const std::string&  Form::getName() const {return (this->_name);}

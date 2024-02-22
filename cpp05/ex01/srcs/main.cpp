@@ -14,7 +14,7 @@ int main() {
       B.signForm(test);
     }
     catch(std::exception& e) {
-      std::err << RED << B.getName() << " couldn’t sign " << test.getName() << " because " << e.what() << RESET << std::endl;
+      std::cerr << RED << e.what() << RESET << std::endl;
   }
 
   }
