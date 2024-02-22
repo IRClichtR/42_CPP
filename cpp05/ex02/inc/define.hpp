@@ -20,7 +20,8 @@
 # include <stdlib.h>
 # include <sstream>
 # include "Bureaucrat.hpp"
-# include "Form.hpp"
+# include "AForm.hpp"
+# include "RobotomyRequestForm.hpp"
 
 //Variables and return values__________________________________________________/
 

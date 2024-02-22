@@ -4,7 +4,7 @@
 # include "define.hpp"
 // # include "Form.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -21,7 +21,8 @@ public:
   void  checkGrade() const;
   void  upGrade();
   void  downGrade();
-  void  signForm(Form&);
+  void  signForm(AForm&);
+  void  executeForm(AForm const &form);
 
   class   GradeTooHighException : public std::exception {
     public:
@@ -36,19 +37,7 @@ public:
       return ("Grade Too Low!");
     }
   };
-  // class   GradeTooLowException : public std::exception {
-  //   public:
-  //     GradeTooLowException() throw() {}
-  //     GradeTooLowException(const std::string& error_msg) throw() : _message(error_msg) {}
-  //
-  //     virtual const char * what() const throw() {
-  //       return (_message.empty() ? "Grade too Low!" : _message.c_str());
-  //     }
-  //
-  //   private:
-  //     std::string _message;
-  // };
-  //
+
 private:
 
   const std::string&  _name;

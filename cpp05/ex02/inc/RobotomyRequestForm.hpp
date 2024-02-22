@@ -20,4 +20,6 @@ private:
   std::string& _target;
 };
 
+bool            headOrTail();
+
 #endif // !ROBOTOMYREQUESTFORM_HPP
