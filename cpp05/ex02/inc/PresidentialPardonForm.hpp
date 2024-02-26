@@ -3,21 +3,22 @@
 
 #include "define.hpp"
 
-class PresidentPardonForm : public AForm {
+class PresidentialPardonForm : public AForm {
 
 public:
 
-  PresidentPardonForm();
-  PresidentPardonForm(const PresidentPardonForm & );
-  PresidentPardonForm& operator=(const PresidentPardonForm &);
-  virtual ~PresidentPardonForm();
+  PresidentialPardonForm();
+  PresidentialPardonForm(PresidentialPardonForm const &);
+  PresidentialPardonForm& operator=(PresidentialPardonForm const &);
+  virtual ~PresidentialPardonForm();
 
-  std::string&  getTarget() const;
-  virtual void  execute(Bureaucrat const & ) const;
+  const std::string&  getTarget() const;
+  virtual void        setTarget(std::string const & target);
+  virtual void        execute(Bureaucrat const & ) const;
 
 private:
   
-  std::string& _target;
+  std::string         _target;
 };
 
 #endif // !PRESIDENTIALPARDONFORM_HPP

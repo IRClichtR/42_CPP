@@ -1,13 +1,12 @@
 #include "define.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137) {std::cout << PURPLE << "ShrubberyCreationForm: created!" << RESET << std::endl;}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137), _target("default") {std::cout << PURPLE << "ShrubberyCreationForm created!" << RESET << std::endl;}
 
-ShrubberyCreationForm(const ShrubberyCreationForm &other) AForm(other._name, other._gToSign, other._gToExec) {
-    this->_target = other.getTarget();
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other.getName(), other.getGradeToSign(), other.getGradeToExec()), _target(other._target) {
     std::cout << PURPLE << "ShrubberyCreationForm: copy created!" << RESET << std::endl;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other) {
 
     if (this != &other)
       this->_target = other.getTarget();
@@ -15,19 +14,21 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return (*this);
 }
 
-virtual ShrubberyCreationForm::~ShrubberyCreationForm() {std::cout << PURPLE << "ShrubberyCreationForm: Destroyed!" << RESET << std::endl;}
+ShrubberyCreationForm::~ShrubberyCreationForm() {std::cout << PURPLE << "ShrubberyCreationForm: Destroyed!" << RESET << std::endl;}
 
-std::string&  ShrubberyCreationForm::getTarget() const {return (this->_target);}
+const std::string&  ShrubberyCreationForm::getTarget() const {return (this->_target);}
+void  ShrubberyCreationForm::setTarget(std::string const &target) {this->_target = target;}
 
-virtual void ShrubberyCreationForm::execute(Bureaucrat const &executor ) const {
+void ShrubberyCreationForm::execute(Bureaucrat const &executor ) const {
 
   if (!this->getSignStatus()) {
-    throw AForm::NotSigned();
+    throw AForm::NotSignedException();
     return ;
   }
+
   if (executor.getGrade() <= this->getGradeToExec()) {
 
-    std::string fileName = executor.getName() +"_shrubbery";
+    std::string fileName = executor.getName() + "_shrubbery";
     std::ofstream ofs(fileName.c_str());
     ofs << "       *()-_=+[{]            " << std::endl; 
     ofs << "    %^&*()-_=+[{]};:',       " << std::endl; 
@@ -51,6 +52,7 @@ virtual void ShrubberyCreationForm::execute(Bureaucrat const &executor ) const {
     ofs << "!@#$%^&*()-_=+[{]};:',<.>/?`~" << std::endl; 
 
   }
-  else
+  else {
     throw GradeTooLowException();
+  }
 }

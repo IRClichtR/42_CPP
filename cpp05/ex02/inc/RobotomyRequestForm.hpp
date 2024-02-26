@@ -12,14 +12,15 @@ public:
   RobotomyRequestForm& operator=(const RobotomyRequestForm &);
   virtual ~RobotomyRequestForm();
 
-  std::string&  getTarget() const;
-  virtual void  execute(Bureaucrat const & ) const;
+  const std::string&  getTarget() const;
+  virtual void        setTarget(std::string const & target);
+  virtual void        execute(Bureaucrat const & ) const;
 
 private:
   
-  std::string& _target;
+  std::string         _target;
 };
 
-bool            headOrTail();
+bool                  headOrTail();
 
 #endif // !ROBOTOMYREQUESTFORM_HPP

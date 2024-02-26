@@ -19,7 +19,10 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 SRCS_DIR	= ./srcs
 SRCS			:= \
 						Bureaucrat.cpp \
-						Form.cpp \
+						AForm.cpp \
+						RobotomyRequestForm.cpp \
+						ShrubberyCreationForm.cpp \
+						PresidentialPardonForm.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
@@ -72,8 +75,15 @@ clean:
 fclean: clean
 	@echo "[" "$(BLUE) ... Removing $(NAME) binary ... $(RESET)" "]"
 	@$(RM) $(NAME)
+	@$(RM) en.subject.pdf
 	@echo "[" "$(GREEN) Done! $(RESET)" "]"
 
+
+subject:
+	@wget https://cdn.intra.42.fr/pdf/pdf/115269/en.subject.pdf
+	@xdg-open /mnt/nfs/homes/ftuernal/Encours/42_CPP/cpp05/ex02
+	@echo "[" "$(GREEN) Subject download from 42! $(RESET)" "]"
+	
 re: fclean all
 
 

@@ -8,16 +8,17 @@ class ShrubberyCreationForm : public AForm {
 public:
 
   ShrubberyCreationForm();
-  ShrubberyCreationForm(const ShrubberyCreationForm & );
-  ShrubberyCreationForm& operator=(const ShrubberyCreationForm &);
+  ShrubberyCreationForm(ShrubberyCreationForm const & );
+  ShrubberyCreationForm& operator=(ShrubberyCreationForm const &);
   virtual ~ShrubberyCreationForm();
 
-  std::string&  getTarget() const;
-  virtual void  execute(Bureaucrat const & ) const;
+  const std::string&  getTarget() const;
+  virtual void        setTarget(std::string const & target);
+  virtual void        execute(Bureaucrat const & ) const;
 
 private:
   
-  std::string& _target;
+  std::string _target;
 };
 
 #endif // !SHRUBBERYCREATIONFORM_HPP

@@ -1,6 +1,6 @@
 #include "define.hpp"
 
-AForm::AForm(std::string& name, unsigned int gToSign, unsigned int gToExec) : _name(name), _gToSign(gToSign), _gToExec(gToExec), _signStatus(false) {
+AForm::AForm(std::string name, unsigned int gToSign, unsigned int gToExec) : _name(name), _gToSign(gToSign), _gToExec(gToExec), _signStatus(false) {
 
   this->checkGrade();
   std::cout << PURPLE << "AForm: Default constructor called" << RESET << std::endl;
@@ -43,6 +43,13 @@ void  AForm::beSigned(const Bureaucrat&) {
   this->checkGrade();
   this->_signStatus = true;
 }
+
+void AForm::execute(Bureaucrat const &) const {return ;}
+void AForm::setTarget(std::string const & target) {
+  (void) target;
+  return ;}
+
+// void                AForm::getTarget(Bureaucrat const &) const {return ;}
 
 std::ostream& operator<<(std::ostream& os, const AForm& F) {
 

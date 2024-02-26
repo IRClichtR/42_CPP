@@ -16,12 +16,17 @@
 //Include Headers______________________________________________________________/
 
 # include <iostream>
+# include <fstream>
 # include <string>
 # include <stdlib.h>
 # include <sstream>
+# include <ctime>
+// # include <cstdlib> 
 # include "Bureaucrat.hpp"
 # include "AForm.hpp"
 # include "RobotomyRequestForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "PresidentialPardonForm.hpp"
 
 //Variables and return values__________________________________________________/
 
