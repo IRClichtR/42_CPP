@@ -26,7 +26,7 @@ Form* Intern::makeForm(std::string &name, std::string& target) {
       break ;
 
     defaut:
-      throw ();
+      throw InvalidFormException();
       return (nullptr);
   }
   

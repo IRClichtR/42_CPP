@@ -46,7 +46,7 @@ public:
     }
   };
 
-  class InvalidException : public std::exception {
+  class InvalidFormException : public std::exception {
   public:
     virtual const char * what() const throw() {
       return ("Invalid form!");
