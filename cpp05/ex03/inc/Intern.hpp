@@ -12,7 +12,7 @@ public:
   Intern &operator=(const Intern &);
   ~Intern();
 
-  Form*  makeForm(std::string& name, std::string& target);
+  AForm*  makeForm(std::string& name, std::string& target);
 
 private:
   

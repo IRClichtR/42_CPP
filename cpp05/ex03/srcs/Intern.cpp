@@ -1,34 +1,54 @@
 #include "define.hpp"
 
-Form* Intern::makeForm(std::string &name, std::string& target) {
+Intern::Intern() {std::cout << PURPLE << "Intern default constructor called" << RESET << std::endl;}
 
-  const std::string tab[3] {"RobotomyRequestForm", "ShrubberyCreationForm", "PresidentialPardonForm"};
+Intern::Intern(Intern const &other) {
+  (void) other;
+  std::cout << PURPLE << "Intern copy constructor called" << RESET << std::endl;
+}
 
-  for (int i = 0; i < 3; i++)
+Intern& Intern::operator=(Intern const &other) {
+  (void) other;
+  return (*this);
+}
+
+Intern::~Intern() {std::cout << PURPLE << "Intern default destructor called" << RESET << std::endl;}
+
+AForm* Intern::makeForm(std::string &name, std::string& target) {
+
+  const std::string tab[3] = {"RobotomyRequestForm", "ShrubberyCreationForm", "PresidentialPardonForm"};
+  int i;
+
+  for (i = 0; i < 4; i++)
     if (tab[i] == name)
       break ;
 
+  AForm * form = NULL;
   switch (i) {
 
     case 0:
-      Form *form = new RobotomyRequestForm();
-      form.setTarget(target);
-      break ;
-
+    {
+      AForm *form = new RobotomyRequestForm();
+      form->setTarget(target);
+      std::cout << GREEN << "Intern creates" << form->getName() << RESET << std::endl;
+      return (form);
+    }
     case 1:
-      Form *form = new ShrubberyCreationForm();
-      form.setTarget(target);
-      break ;
-
+    {
+      AForm *form = new ShrubberyCreationForm();
+      form->setTarget(target);
+      std::cout << GREEN << "Intern creates" << form->getName() << RESET << std::endl;
+      return form;
+    }
     case 2:
-      Form *form = new PresidentialPardonForm();
-      form.setTarget(target);
-      break ;
-
-    defaut:
-      throw InvalidFormException();
-      return (nullptr);
+    {
+      AForm *form = new PresidentialPardonForm();
+      form->setTarget(target);
+      std::cout << GREEN << "Intern creates " << form->getName() << RESET << std::endl;
+      return form;
+    }
+    default:
+      throw AForm::InvalidFormException();
   }
-  
-  return form;
+  return (form);
 }
