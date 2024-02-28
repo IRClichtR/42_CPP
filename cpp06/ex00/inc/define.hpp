@@ -16,6 +16,9 @@
 //Include Headers______________________________________________________________/
 
 # include <iostream>
+# include <iomanip>
+# include <math.h>
+# include <stdlib.h>
 # include <string>
 # include "ScalarConverter.hpp"
 
@@ -35,7 +38,7 @@ extern bool DEBUG;
 int   defineType(std::string& literal);
 bool  notInf(std::string& literal);
 bool  notNumberOrFloat(std::string& literal);
-int   getPrecision(literal);
+int   getPrecision(std::string& literal);
 void  displayChar(double value, std::string& literal);
 void  displayDouble(double value, int precision);
 void  displayInt(double value,std::string& literal);

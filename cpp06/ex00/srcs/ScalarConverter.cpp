@@ -1,10 +1,11 @@
 #include "define.hpp"
 
-void ScalarConverter::convert(std::string const &literal) {
+void ScalarConverter::convert(std::string const &inputStr) {
 
-  int type = defineType();
+  int type = defineType(literal);
   double a;
   int precision;
+  std::string literal = inputStr;
 
   switch (type) {
 
@@ -15,7 +16,7 @@ void ScalarConverter::convert(std::string const &literal) {
 
     case INT:
       a = atof(literal);
-      prec = getPrecision(literal);
+      precision = getPrecision(literal);
       break ;
 
     case FLOAT:
@@ -30,6 +31,7 @@ void ScalarConverter::convert(std::string const &literal) {
 
     default:
       isImpossible();
+      return ;
   }
   displayChar(a, literal);
   displayInt(a, literal);

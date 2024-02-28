@@ -8,9 +8,9 @@ class ScalarConverter {
 public:
 
   ScalarConverter();
-  ~ScalarConverter() = 0;
+  virtual ~ScalarConverter() = 0;
 
- static void *convert(std::string const &); 
+ static void convert(std::string const &); 
 };
 
 
