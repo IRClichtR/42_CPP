@@ -17,6 +17,7 @@
 
 # include <iostream>
 # include <string>
+# include "ScalarConverter.hpp"
 
 //Variables and return values__________________________________________________/
 
@@ -30,11 +31,15 @@ extern bool DEBUG;
 
 //Utils Functions______________________________________________________________/
 
-// bool          checkArgs(int ac, char **av);
-// unsigned int  getIntArg(std::string action);
-// std::string   getStrArg(std::string action);
-// std::string   getUsrInput(void);
 
+int   defineType(std::string& literal);
+bool  notInf(std::string& literal);
+bool  notNumberOrFloat(std::string& literal);
+int   getPrecision(literal);
+void  displayChar(double value, std::string& literal);
+void  displayDouble(double value, int precision);
+void  displayInt(double value,std::string& literal);
+void  displayFloat(double value, int precision);
 
 //ANSI Colors__________________________________________________________________/
 

@@ -1,37 +1,41 @@
 #include "define.hpp"
 
-void *ScalarConverter::convert(std::string& literal)
-{
-  int type = defineType(literal);
-  switch (type)
-  {
-    case CHAR:
+void ScalarConverter::convert(std::string const &literal) {
+
+  int type = defineType();
+  double a;
+  int precision;
+
+  switch (type) {
+
+    case CHAR: 
+      a = literal[0];
+      precision = 1;
       break ;
+
     case INT:
-      int *result = 
+      a = atof(literal);
+      prec = getPrecision(literal);
       break ;
+
     case FLOAT:
+      a = atof(literal);
+      precision = getPrecision(literal);
+      break ;
+
     case DOUBLE:
+      a = atof(literal);
+      precision = getPrecision(literal);
+      break ;
+
     default:
-    std::cerr << literal << RED << "Error: Unknown type!" << RESET << std::endl;
+      isImpossible();
   }
-  
-  else 
+  displayChar(a, literal);
+  displayInt(a, literal);
+  displayFloat(a, precision);
+  displayDouble(a, precision);
+
 }
 
-int defineType(std::string &literal)
-{
-  int type;
 
-  if (isInt(literal))
-    type = INT;
-  else if (isDouble(literal))
-    type = DOUBLE;
-  else if (isFloat(literal))
-    type = FLOAT;
-  else if (isChar(literal))
-    type =  CHAR;
-  else 
-    return (-1);
-  }
-}
