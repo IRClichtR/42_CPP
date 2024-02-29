@@ -36,13 +36,14 @@ extern bool DEBUG;
 
 
 int   defineType(std::string& literal);
-bool  notInf(std::string& literal);
-bool  notNumberOrFloat(std::string& literal);
-int   getPrecision(std::string& literal);
 void  displayChar(double value, std::string& literal);
 void  displayDouble(double value, int precision);
 void  displayInt(double value,std::string& literal);
 void  displayFloat(double value, int precision);
+int   getPrecision(std::string& literal);
+bool  notInf(std::string& literal);
+bool  notNumberOrFloat(std::string& literal);
+void  isImpossible();
 
 //ANSI Colors__________________________________________________________________/
 

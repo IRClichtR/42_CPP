@@ -82,3 +82,12 @@ void displayDouble(double value, int precision) {
   
   std::cout << "double: '" << std::fixed << std::setprecision(precision) << value << std::endl;
 }
+
+void  isImpossible() {
+
+    std::cout << RED << "char: impossible cast" << RESET << std::endl;
+    std::cout << RED << "int: impossible cast" << RESET << std::endl;
+    std::cout << RED << "float: impossible cast" << RESET << std::endl;
+    std::cout << RED << "double: impossible cast" << RESET << std::endl;
+
+}

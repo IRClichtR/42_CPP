@@ -2,10 +2,10 @@
 
 void ScalarConverter::convert(std::string const &inputStr) {
 
+  std::string literal = inputStr;
   int type = defineType(literal);
   double a;
   int precision;
-  std::string literal = inputStr;
 
   switch (type) {
 

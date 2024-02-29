@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= BureaucratCreator.bin
+NAME			= ScalarConverter.bin
 
 #Includes__________________________________________________________________________/
 
@@ -19,6 +19,7 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 SRCS_DIR	= ./srcs
 SRCS			:= \
 						ScalarConverter.cpp \
+						utils.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 
