@@ -1,6 +1,6 @@
 #include "define.hpp"
 
-void ScalarConverter::convert(std::string const &inputStr) {
+void ScalarConverter::convert(std::string const &inputStr, char *rawArg) {
 
   std::string literal = inputStr;
   int type = defineType(literal);
@@ -15,17 +15,17 @@ void ScalarConverter::convert(std::string const &inputStr) {
       break ;
 
     case INT:
-      a = atof(literal);
+      a = atof(rawArg);
       precision = getPrecision(literal);
       break ;
 
     case FLOAT:
-      a = atof(literal);
+      a = atof(rawArg);
       precision = getPrecision(literal);
       break ;
 
     case DOUBLE:
-      a = atof(literal);
+      a = atof(rawArg);
       precision = getPrecision(literal);
       break ;
 

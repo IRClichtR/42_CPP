@@ -10,7 +10,7 @@ public:
   ScalarConverter();
   virtual ~ScalarConverter() = 0;
 
- static void convert(std::string const &); 
+ static void convert(std::string const &, char *); 
 };
 
 
