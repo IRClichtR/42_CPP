@@ -3,8 +3,8 @@
 void iter(T *arrAddr, size_t arrLen, void func(T & a)) {
 
   for (int i = 0 ; i < arrLen, i++) {
-    arrAddr[i] = func(a);
+    arrAddr[i] = func(arrAddr[i]);
   }
 }
 
-void increase(T const & elt) {return elt + 1;}
+void increase(T & elt) {elt += 1;}
