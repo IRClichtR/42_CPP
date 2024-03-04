@@ -45,21 +45,28 @@ void  Base::identify(Base& p) {
     static_cast<void>(typeA);
     std::cout << "type is A" << std::endl;
   }
-  catch (std::exception &e) {};
+  catch (std::exception &e) {
+    std::cerr << RED << e.what() << RESET << std::endl;
+  }
   try {
 
     B &typeB = dynamic_cast<B&>(p);
     static_cast<void>(typeB);
     std::cout << "type is B" << std::endl;
   }
-  catch (std::exception &e) {};
+  catch (std::exception &e) {
+    std::cerr << e.what() << std::endl;
+    std::cerr << RED << e.what() << RESET << std::endl;
+  }
   try {
 
     C &typeC = dynamic_cast<C&>(p);
     static_cast<void>(typeC);
     std::cout << "type is C" << std::endl;
   }
-  catch (std::exception &e) {};
+  catch (std::exception &e) {
+    std::cerr << RED << e.what() << RESET << std::endl;
+  }
   std::cout << GREEN << "Reference identification done!" << RESET << std::endl;
 }
 
