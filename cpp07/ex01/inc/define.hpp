@@ -16,6 +16,7 @@
 //Include Headers______________________________________________________________/
 
 # include <iostream>
+# include <cstddef>
 # include "iter.hpp"
 
 extern bool DEBUG;

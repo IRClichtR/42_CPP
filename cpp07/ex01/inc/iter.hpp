@@ -4,9 +4,15 @@
 #include "define.hpp"
 
 template<typename T>
-void  iter(T *arrAddr, size_t arrLen, void func(T & a));
+void  iter(T *arrAddr, size_t arrLen, void func(T &)) {
+ for (size_t i = 0 ; i < arrLen ; i++) {
+    func(arrAddr[i]);
+ } 
+}
 
 template<typename T>
-void  increase(T & a);
+void  print(T & elt) {
+  std::cout << elt << std::endl;
+}
 
 #endif // !ITER_HPP
