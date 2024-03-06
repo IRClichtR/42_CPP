@@ -17,7 +17,7 @@
 
 # include <iostream>
 # include <cstddef>
-# include "Array.hpp"
+# include <stdlib.h>
 
 extern bool DEBUG;
 
@@ -36,6 +36,7 @@ extern bool DEBUG;
 # define CYAN   "\033[0;36m"
 # define RESET  "\033[0m"
 
+# include "Array.hpp"
 
 
 #endif //define.hpp

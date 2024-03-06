@@ -1,12 +1,5 @@
 #include <iostream>
-
-// int main() {
-//   int * a = new int();
-//   std::cout << a << std::endl;
-//   delete a;
-//   return (0);
-// }
-#include <Array.hpp>
+#include <define.hpp>
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -24,7 +17,9 @@ int main(int, char**)
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
+        std::cout << "Destruction of copies should not entail leaks or segfault" << std::endl;
     }
+    std::cout << GREEN << "Test copy OK" << RESET << std::endl;
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -40,7 +35,7 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "try negative index, should return std::excetion | Return = " << e.what() << GREEN << " | test OK" << RESET << '\n';
     }
     try
     {
@@ -48,13 +43,23 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "try create an empty tab should return exception: " << e.what() << GREEN << "test OK" << RESET << '\n';
     }
 
+    bool flag = true;
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
+        if (numbers[i] == mirror[i])
+          flag = false;
     }
-    delete [] mirror;//
+    if (flag == true) { 
+      std::cout << "change values in source tab should not affect copy tab: values should differ." << GREEN << "test OK" << RESET << std::endl;
+    }
+    else {
+      std::cerr << "Memory alloc problem" << std::endl;
+    }
+    delete [] mirror;
+    std::cout << "destruction of mirror doesn't provoc leaks or segfault: " << GREEN << "test OK" << RESET << std::endl;
     return 0;
 }
