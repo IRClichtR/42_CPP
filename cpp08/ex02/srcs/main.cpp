@@ -1,3 +1,6 @@
+#include "define.hpp"
+
+
 int main()
 {
   MutantStack<int> mstack;

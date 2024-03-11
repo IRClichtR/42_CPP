@@ -17,7 +17,8 @@
 
 # include <iostream>
 # include <iterator>
-# include <vector>
+# include <list>
+# include <stack>
 # include <algorithm>
 # include "MutantStack.hpp"
 
