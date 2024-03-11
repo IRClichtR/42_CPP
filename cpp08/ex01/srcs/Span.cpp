@@ -79,3 +79,14 @@ void  Span::displaySpan() {
   for (size_t i = 0 ; i < this->_numTab.size(); i++)
     std::cout << "Span [" << i << "] = " << this->_numTab[i] << std::endl;
 }
+
+
+void Span::addRangeNumber(std::vector<int>::iterator beg, std::vector<int>::iterator end) {
+
+  unsigned int i = this->_numTab.size() - 1;
+  while (beg != end && i < this->_maxN) {
+    this->addNumber(*beg);
+    beg++;
+    i++;
+  }
+}

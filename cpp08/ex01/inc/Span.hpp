@@ -15,6 +15,7 @@ public:
   unsigned int  shortestSpan();
   unsigned int  longestSpan();
   void          displaySpan();
+  void          addRangeNumber(std::vector<int>::iterator beg, std::vector<int>::iterator end);
 
 
   class SpanIsFullException : public std::exception {
