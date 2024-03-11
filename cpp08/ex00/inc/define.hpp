@@ -18,8 +18,9 @@
 # include <iostream>
 # include <iterator>
 # include <vector>
+# include <algorithm>
 
-extern bool DEBUG;
+// extern bool DEBUG;
 
 
 
@@ -37,5 +38,6 @@ extern bool DEBUG;
 # define RESET  "\033[0m"
 
 
+# include "easyfind.hpp"
 
 #endif //define.hpp
