@@ -18,7 +18,8 @@
 # include <iostream>
 # include <iterator>
 # include <vector>
-# include <array>
+// # include <array>
+# include <algorithm>
 # include "Span.hpp"
 
 // extern bool DEBUG;

@@ -1,6 +1,6 @@
 #Name______________________________________________________________________________/
 
-NAME			= templateFunc.bin
+NAME			= Span.bin
 
 #Includes__________________________________________________________________________/
 
@@ -18,6 +18,7 @@ INC_FLAGS	= $(addprefix -I, $(INC_DIR))
 
 SRCS_DIR	= ./srcs
 SRCS			:= \
+						Span.cpp \
 						main.cpp
 SRCS			:= $(SRCS:%=$(SRCS_DIR)/%)
 

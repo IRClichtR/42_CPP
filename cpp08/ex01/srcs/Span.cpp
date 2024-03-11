@@ -6,10 +6,7 @@ Span::Span(unsigned int Nb) : _maxN(Nb) {
 
   if (_maxN <= 1) 
     throw NotEnoughNbException();
-  else if (_maxN > 4294967295)
-    throw OverFlowException();
 
-  this->_numTab.resize(_maxN);
   std::cout << PURPLE << "Span created" << RESET << std::endl;
 }
 
@@ -31,46 +28,54 @@ Span &  Span::operator=(const Span &other) {
   return (*this);
 }
 
+Span::~Span() {std::cout << PURPLE << "Span detroyed" << RESET << std::endl;}
+
 void  Span::addNumber(int nb) {
 
-  try {
+  if (this->_numTab.size() == this->_maxN)
+    throw SpanIsFullException();
+  else
     this->_numTab.push_back(nb);
-    std::sort(this->_numTab.begin(), this->_numTab.end());
-  }
-  catch (SpanIsFullException & e) {
-    std::cout << RED << nb << "Could not add number to Span: " << e.what() << RESET << std::endl;
-  }
+} 
 
-}
-
-unsigned int shortestSpan() {
+unsigned int Span::shortestSpan() {
 
   if (this->_maxN < 2 || this->_numTab.size() < 2)
     throw NotEnoughNbException();
 
   unsigned int shorterSpan = std::numeric_limits<int>::max();
-  int diff = 0;
+  unsigned int diff = 0;
+  std::vector<int> sortedTab = this->_numTab;
+  std::sort(sortedTab.begin(), sortedTab.end());
 
-  for (size_t i = 1 ; i < this->_numTab.size(); i++) {
-    diff = this->_numTab[i] - this->_numTab[i - 1];
+  for (size_t i = 1 ; i < sortedTab.size(); i++) {
+    diff = sortedTab[i] - sortedTab[i - 1];
     if (diff < shorterSpan)
       shorterSpan = diff;
   } 
   return (shorterSpan);
 }
 
-unsigned int longestSpan() {
+unsigned int Span::longestSpan() {
 
   if (this->_maxN < 2 || this->_numTab.size() < 2)
     throw NotEnoughNbException();
 
-  unsigned int longerSpan = std::numeric_limits<int>::min();
-  int diff = 0;
+  unsigned int longerSpan = 0;
+  unsigned int diff = 0;
+  std::vector<int> sortedTab = this->_numTab;
+  std::sort(sortedTab.begin(), sortedTab.end());
 
-  for (size_t i = 1 ; i < this->_numTab.size(); i++) {
-    diff = this->_numTab[i] - this->_numTab[i - 1];
+  for (size_t i = 1 ; i < sortedTab.size(); i++) {
+    diff = sortedTab[i] - sortedTab[i - 1];
     if (diff > longerSpan)
       longerSpan = diff;
-  } 
+  }
   return (longerSpan);
+}
+
+void  Span::displaySpan() {
+
+  for (size_t i = 0 ; i < this->_numTab.size(); i++)
+    std::cout << "Span [" << i << "] = " << this->_numTab[i] << std::endl;
 }
