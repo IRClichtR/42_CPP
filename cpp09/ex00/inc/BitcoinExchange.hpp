@@ -11,6 +11,10 @@ public:
   BitcoinExchange &operator=(const BitcoinExchange &);
   ~BitcoinExchange();
 
+  bool  checkFile() const;
+  bool  checkFormat() const;
+  bool  checkValues() const;
+  void  getFile() const;
   
 
 private:
