@@ -20,8 +20,8 @@ public:
 private:
   
   const std::string _filename;
-  std::map<std::string, float> _input;
-  std::map<std::string, float> _btcVal;
+  std::map<std::string, std::string> _input;
+  std::map<std::string, std::string> _btcVal;
 };
 
 #endif // !BITCOINEXCHANGE_HPP

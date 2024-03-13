@@ -19,11 +19,8 @@ void BitcoinExchange::getFileIntoMap() {
     std::istringstream lineStream(line);
     std::string keyStr, valStr;
 
-    if (std::getline(lineStream, keyStr, ',')) {
-      if (std::getline(lineStream, valStr) && isValidNumber(valStr)) {
-        float val = std::stof(valueStr);
-      }
-      
-
+    if (std::getline(lineStream, keyStr, ',' && std::getline(lineStream, valStr) {
+      this->_btcVal[keyStr] = valStr;
     }
+
 }
