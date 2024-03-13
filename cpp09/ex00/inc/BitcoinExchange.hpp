@@ -14,7 +14,7 @@ public:
   bool  checkFile() const;
   bool  checkFormat() const;
   bool  checkValues() const;
-  void  getFile() const;
+  void  getFileIntoMap() const;
   
 
 private:

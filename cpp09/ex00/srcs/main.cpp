@@ -14,9 +14,6 @@ int main(int ac, char **av) {
   catch (BitcoinExchange::InvalidFD & e) {
     std::cout << RED << av[0] << ": error: " << e.what() << RESET << std::endl;
   }
-  catch (BitcoinExchange::FDPermission & e) {
-    std::cout << RED << av[0] << ": error: " << e.what() << RESET << std::endl;
-  }
   catch (BitcoinExchange::InvalidFormat & e) {
     std::cout << RED << av[0] << ": error: " << e.what() << RESET << std::endl;
   }
