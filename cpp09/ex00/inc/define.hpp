@@ -18,7 +18,10 @@
 # include <iostream>
 # include <map>
 # include <algorithm>
-# include "MutantStack.hpp"
+# include <sstream>
+# include <string>
+# include <fstream>
+# include "BitcoinExchange.hpp"
 
 // extern bool DEBUG;
 
@@ -26,6 +29,8 @@
 
 //Utils Functions______________________________________________________________/
 
+std::map<std::string, std::string> putDataIntoMap(const char *filename, char sep);
+  
 
 //ANSI Colors__________________________________________________________________/
 

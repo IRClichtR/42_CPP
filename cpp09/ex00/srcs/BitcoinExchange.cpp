@@ -1,26 +1,57 @@
 #include "define.hpp"
 
-// void BitcoinExchange::checkFile() {
-//
-//   std::ifstream ifs(this->_filename);
-//
-//   if (!ifs.good())
-//     throw InvalidFD();
-// }
+BitcoinExchange::BitcoinExchange(const char *filename) : _filename(filename) {
+  try {this->putPricesIntoMap();}
+  catch (InvalidFD & e) {std::cerr << RED << "error: data.csv" << e.what() << RESET << std::endl;}
+}
 
-void BitcoinExchange::getFileIntoMap() {
+BitcoinExchange::~BitcoinExchange() {}
+
+
+void BitcoinExchange::putPricesIntoMap() {
   
-  std::ifstream inputFile(this->_filesname);
-  if (!inputFile.is_open())
-    throw InvalidFD();
+  std::string data = "data.csv";
+  const char *str = data.c_str();
 
-  std::string line;
-  while (std::getline(inputFile, line)) {
-    std::istringstream lineStream(line);
-    std::string keyStr, valStr;
+  try {this->_btcVal = putDataIntoMap(str, ',');}
+  catch (InvalidFD & e) {std::cerr << RED << "error: " << this->_filename << ": " << e.what() << RESET << std::endl;}
 
-    if (std::getline(lineStream, keyStr, ',' && std::getline(lineStream, valStr) {
-      this->_btcVal[keyStr] = valStr;
-    }
+  try {this->checkDataMap()}
+  catch (InvalidDate & e) {} 
+  catch (InvalidNumber & e) {}
+  catch NegativeValue() {}
 
 }
+
+void  BitcoinExchange::displayBtcChart() {
+
+  std::map<std::string, std::string>::iterator it;
+  for (it = this->_btcVal.begin() ; it != this->_btcVal.end() ; it++)
+    std::cout << "date: " << it->first << " | value: " << it->second << std::endl;
+}
+
+void  processRequest() {
+
+  std::ifstream requestFile(this->_filename);
+  if(!requestFile.is_open())
+    throw InvalidFD();
+  if (!this->checkRequestFile())
+    throw InvalidRequestFormat();
+ 
+  std::map<std::string, std::string> requestMap = putDataIntoMap(this->_filename, '|');
+
+  std::map<std::string, std::string>::iterator it;
+  for (it = requestMap.begin() ; it != requestMap.end() ; ++it) {
+    try {
+      checkDate(it->first);
+      checkVal(it->second, 0 , 1000);
+      this->displayRequest(*it);
+    }
+    catch (InvalidDate & e) {} 
+    catch (InvalidNumber & e) {} 
+    catch (NegativeValue & e) {}
+    catch (TooHighValue & e) {}
+  }
+}
+
+void  displayRequest()

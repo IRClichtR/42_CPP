@@ -9,14 +9,14 @@ int main(int ac, char **av) {
 
   try {
     BitcoinExchange btc(av[1]);
-    btc.displayValues()
+    btc.displayBtcChart();
   }
   catch (BitcoinExchange::InvalidFD & e) {
     std::cout << RED << av[0] << ": error: " << e.what() << RESET << std::endl;
   }
-  catch (BitcoinExchange::InvalidFormat & e) {
-    std::cout << RED << av[0] << ": error: " << e.what() << RESET << std::endl;
-  }
-
+  // catch (BitcoinExchange::InvalidFormat & e) {
+  //   std::cout << RED << av[0] << ": error: " << e.what() << RESET << std::endl;
+  // }
+  //
   return (0);
-}
+} 
