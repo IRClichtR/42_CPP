@@ -11,24 +11,14 @@ public:
   // BitcoinExchange &operator=(const BitcoinExchange &);
   ~BitcoinExchange();
 
-  // bool  checkFile() const;
-  // bool  checkFormat() const;
-  // bool  checkValues() const;
   void  putPricesIntoMap();
-
+  void  processRequest(const char *request);
   void  displayBtcChart();
+  void  displayRequest();
   
-  class InvalidFD : public std::exception {
-    public:
-    virtual const char * what() const throw() {
-      return ("Invalid File");
-    }
-  };
-
 private:
   
   const char *_filename;
-  // std::map<std::string, std::string> _input;
   std::map<std::string, std::string> _btcVal;
 };
 

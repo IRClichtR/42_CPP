@@ -1,40 +1,24 @@
 #include "define.hpp"
 
-std::map<std::string, std::string> putDataIntoMap(const char *filename, char sep) {
+std::map<std::string, std::string> putDataIntoMap(const char *filename, std::string sep) {
 
   std::ifstream inputFile(filename);
   if (!inputFile.is_open())
-    throw BitcoinExchange::InvalidFD();
+    throw InvalidFD();
 
   std::map<std::string, std::string>  map;
   std::string line;
 
   while (std::getline(inputFile, line)) {
     std::istringstream lineStream(line);
-    std::string keyStr, valStr;
+    if (line.substr(10, 10 + sep.length() - 1) != sep)
+      throw CorruptedData();
 
-    if (std::getline(lineStream, keyStr, sep) && std::getline(lineStream, valStr)) {
-      map[keyStr] = valStr;
-    }
+    std::string keyStr, valStr;
+    keyStr = line.substr(0, 9);
+    valStr = line.substr(9 + sep.length());
   }
   return (map);
-}
-
-void  checkDate(const std::string date) {
-
-  if (date.length() != 10 || date[4] != '-' || date[7] != '-')
-    throw InvalidDate();
-  
-  bool flag = false;
-  for (size_t i = 0 ; i != date.length() ; i++) {
-
-    if (flag)
-      throw InvalidDate();
-    if (i == 4 || i == 7)
-      i += 1;
-    if (!isdigit(date[i]))
-      flag = true;
-  }
 }
 
 void  checkVal(const std::string value, int low, int high) {
@@ -55,3 +39,17 @@ void  checkVal(const std::string value, int low, int high) {
     throw TooHighValue();
 }
 
+void  checkDataMap(std::map<std::string, std::string> map, int low, int high) {
+
+  std::map<std::string, std::string>::iterator it;
+
+  for (it = this->_btcVal.begin() ; it != this->_btcVal.end() ; it++) {
+    try {
+      checkDate(it->first);
+      checkVal(it->second, low, high);
+    }
+    catch (InvalidNumber & e) {std::cerr << RED << e.what() << RESET << std::endl;}
+    catch (NegativeValue & e) {std::cerr << RED << e.what() << RESET << std::endl;}
+    catch (TooHighValue & e) {std::cerr << RED << e.what() << RESET << std::endl;}
+  }
+}

@@ -21,6 +21,8 @@
 # include <sstream>
 # include <string>
 # include <fstream>
+# include <cstdlib>
+# include "Exceptions.hpp"
 # include "BitcoinExchange.hpp"
 
 // extern bool DEBUG;
@@ -28,8 +30,16 @@
 
 
 //Utils Functions______________________________________________________________/
+//
+void                                checkDate(const std::string &date);
+void                                checkDataMap(std::map<std::string, std::string> map, int low, int high);
+bool                                checkDateDigits(const std::string &date);
+bool                                checkMonths(const std::string &date);
+bool                                isBisextile(int year);
+bool                                is31Month(int year);
 
-std::map<std::string, std::string> putDataIntoMap(const char *filename, char sep);
+void                                checkVal(const std::string value, int low, int high);
+std::map<std::string, std::string>  putDataIntoMap(const char *filename, char sep);
   
 
 //ANSI Colors__________________________________________________________________/

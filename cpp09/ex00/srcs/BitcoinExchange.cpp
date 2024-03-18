@@ -11,9 +11,11 @@ BitcoinExchange::~BitcoinExchange() {}
 void BitcoinExchange::putPricesIntoMap() {
   
   std::string data = "data.csv";
+  std::string sep = ",";
   const char *str = data.c_str();
+  
 
-  try {this->_btcVal = putDataIntoMap(str, ',');}
+  try {this->_btcVal = putDataIntoMap(str, sep);}
   catch (InvalidFD & e) {std::cerr << RED << "error: " << this->_filename << ": " << e.what() << RESET << std::endl;}
 
   try {this->checkDataMap()}
@@ -30,28 +32,25 @@ void  BitcoinExchange::displayBtcChart() {
     std::cout << "date: " << it->first << " | value: " << it->second << std::endl;
 }
 
-void  processRequest() {
+void  BitcoinExchange::processRequest(const char *request) {
+  
+  try {
+    std::map<std::string, std::string> requestMap = putDataIntoMap(request, " | ");
 
-  std::ifstream requestFile(this->_filename);
-  if(!requestFile.is_open())
-    throw InvalidFD();
-  if (!this->checkRequestFile())
-    throw InvalidRequestFormat();
- 
-  std::map<std::string, std::string> requestMap = putDataIntoMap(this->_filename, '|');
-
-  std::map<std::string, std::string>::iterator it;
-  for (it = requestMap.begin() ; it != requestMap.end() ; ++it) {
-    try {
-      checkDate(it->first);
-      checkVal(it->second, 0 , 1000);
-      this->displayRequest(*it);
+    std::map<std::string, std::string>::iterator it;
+    for (it = requestMap.begin() ; it != requestMap.end() ; ++it) {
+      try {
+        checkDate(it->first);
+        checkVal(it->second, 0 , 1000);
+        displayRequest(it);
+      }
+      catch (InvalidDate & e) {std::cerr << RED << e.what() << RESET << std::endl;} 
+      catch (InvalidNumber & e) {std::cerr << RED << e.what() << RESET << std::endl;} 
+      catch (NegativeValue & e) {std::cerr << RED << e.what() << RESET << std::endl;}
+      catch (TooHighValue & e) {std::cerr << RED << e.what() << RESET << std::endl;}
     }
-    catch (InvalidDate & e) {} 
-    catch (InvalidNumber & e) {} 
-    catch (NegativeValue & e) {}
-    catch (TooHighValue & e) {}
   }
+  catch (InvalidFD & e) {std::cerr << RED << e.what() << RESET << std::endl;}
+  catch (CorruptedData & e) {std::cerr << RED << e.what() << RESET << std::endl;}
 }
 
-void  displayRequest()
