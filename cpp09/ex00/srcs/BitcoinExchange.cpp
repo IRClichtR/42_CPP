@@ -19,9 +19,9 @@ void BitcoinExchange::putPricesIntoMap() {
   catch (InvalidFD & e) {std::cerr << RED << "error: " << this->_filename << ": " << e.what() << RESET << std::endl;}
 
   try {this->checkDataMap()}
-  catch (InvalidDate & e) {} 
-  catch (InvalidNumber & e) {}
-  catch NegativeValue() {}
+  catch (InvalidDate & e) {std::cerr << RED << e.what() << RESET << std::endl;} 
+  catch (InvalidNumber & e) {std::cerr << RED << e.what() << RESET << std::endl;}
+  catch NegativeValue() {std::cerr << RED << e.what() << RESET << std::endl;}
 
 }
 
@@ -54,3 +54,8 @@ void  BitcoinExchange::processRequest(const char *request) {
   catch (CorruptedData & e) {std::cerr << RED << e.what() << RESET << std::endl;}
 }
 
+void  BitcoinExchange::displayRequest(std::map<std::string, std::string>::iterator it) {
+
+  
+
+}

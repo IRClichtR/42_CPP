@@ -14,7 +14,7 @@ public:
   void  putPricesIntoMap();
   void  processRequest(const char *request);
   void  displayBtcChart();
-  void  displayRequest();
+  void  displayRequest(std::map<std::string, std::string>::iterator it);
   
 private:
   
