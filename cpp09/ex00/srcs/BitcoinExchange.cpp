@@ -54,8 +54,46 @@ void  BitcoinExchange::processRequest(const char *request) {
   catch (CorruptedData & e) {std::cerr << RED << e.what() << RESET << std::endl;}
 }
 
+void  BitcoinExchange::displayClosestVal(std::map<std::string, std::string>::iterator it) {
+
+  std::map<std::string, std::string>::iterator closestEntry = this->findClosestEntry(it);
+
+  std::string dateSearched = it->first;
+  std::string valSearched = it->second;
+  double res;
+
+  res = std::atof(closestEntry->second) * std::atof(valSearched);
+  std::cout << dateSearched << " => " < valSearched << " = " << res << std::endl;
+}
+
+std::map<std::string, std::string>::iterator> BitcoinExchange::findClosestEntry(std::map<std::string, std::string>::iterator it) {
+
+  std::map<std::string, std::string>::iterator closestEntry = this->_btcVal.begin();
+  int minDiff = std::numeric_limits<int>::max;
+
+  for (std::map<std::string, std::string>::iterator iter = this->_btcVal.begin() ; iter != this->_btcVal.end() ; it++) {
+    int diff = dateDiff(it->first, iter->first);
+    if (diff < mindiff) {
+      minDiff = diff;
+      closestEntry = iter;
+    }
+  }
+
+  return (closestEntry);
+}
+
 void  BitcoinExchange::displayRequest(std::map<std::string, std::string>::iterator it) {
 
-  
+  std::string dateSearched = it->first;
+  std::string valSearched = it->second;
+  double res;
+
+  std::map<std::string, std::string>::iterator btcIt = this->_btcVal.find(dateSearched);
+  if (btcIt != this->_btcVal.end()) {
+    res = std::atof(this->_btcIt->second) * std::atof(valSearched);
+    std::cout << dateSearched << " => " < valSearched << " = " << res << std::endl;
+  }
+  else
+    this->displayClosestVal(it);
 
 }

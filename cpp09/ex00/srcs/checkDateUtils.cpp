@@ -59,6 +59,22 @@ void  checkDate(const std::string &date) {
     throw InvalidDate();
 }
 
+int dateDiff(const std::string& chart, const std::string& target) {
+
+  struct tm chartTm = {0};
+  struct tm targetTm = {0};
+
+  std::strptime(chart.c_str(), "%Y-%m-%d", &chartTm);
+  std::strptime(target.c_str(), "%Y-%m-%d", &targetTm);
+
+  time_t chartTime = mktime(&chartTm);
+  time_t targetTime = mktime(&targetTm);
+
+  double diff = std::difftime(chartTime, targetTime);
+
+  return static_cat<int>(std::round(difference / (60 * 60 * 24)));
+}
+
 /*
 int main(int ac, char **av) {
 
