@@ -32,7 +32,7 @@ class TooHighValue : public std::exception {
   };
 
 class InvalidFD : public std::exception {
-    public:
+    public: 
     virtual const char * what() const throw() {
       return ("Invalid File");
     }
