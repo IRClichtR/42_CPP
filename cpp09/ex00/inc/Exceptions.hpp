@@ -41,7 +41,7 @@ class InvalidFD : public std::exception {
 class CorruptedData : public std::exception {
     public:
     virtual const char * what() const throw() {
-      return ("Corrupted Data in src file");
+      return ("Corrupted Data");
     }
   };
 

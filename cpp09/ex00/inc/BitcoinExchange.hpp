@@ -1,25 +1,22 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-
 class BitcoinExchange {
 
 public:
 
   BitcoinExchange(const char *);
-  // BitcoinExchange(const BitcoinExchange &);
-  // BitcoinExchange &operator=(const BitcoinExchange &);
+  // BitcoinEchange(const BitcoinExchange &);
+  // BitcoinEchange &operator=(const BitcoinExchange &);
   ~BitcoinExchange();
 
-  void  putPricesIntoMap();
-  void  processRequest(const char *request);
-  void  displayBtcChart();
-  void  displayRequest(std::map<std::string, std::string>::iterator it);
-  
+  void                                initExchange(const char *filename);
+  std::map<std::string, std::string>  putDataIntoMap(const char *filename, std::string sep)
+
 private:
+
+  std::map<std::string, std::string>  _data;
   
-  const char *_filename;
-  std::map<std::string, std::string> _btcVal;
 };
 
 #endif // !BITCOINEXCHANGE_HPP
