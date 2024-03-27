@@ -1,6 +1,8 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include "define.hpp"
+
 class BitcoinExchange {
 
 public:
@@ -13,6 +15,7 @@ public:
   void                                displayBtcChart();
   void                                initExchange();
   std::map<std::string, std::string>  putDataIntoMap(const char *filename, std::string sep);
+  void                                checkMap(std::map<std::string, std::string>, int min, int max);
 
 private:
 

@@ -36,15 +36,13 @@
 //Utils Functions______________________________________________________________/
 //
 void                                checkDate(const std::string &date);
-void                                checkDataMap(std::map<std::string, std::string> map, int low, int high);
 bool                                checkDateDigits(const std::string &date);
 bool                                checkMonths(const std::string &date);
-int                                 dateDiff(const std::string& chart, const std::string& target);
+// int                                 dateDiff(const std::string& chart, const std::string& target);
 bool                                is31Month(int year);
 bool                                isBisextile(int year);
 
 void                                checkVal(const std::string value, int low, int high);
-std::map<std::string, std::string>  putDataIntoMap(const char *filename, char sep);
   
 
 //ANSI Colors__________________________________________________________________/
